@@ -108,6 +108,7 @@
     ...[0, 1, 2, 3, 4, 5, 6].map(i => [`메인 배너 ${i + 1}`, () => { showHome(); bannerGo(i); }]),
     ['메인 (로그인 전 사이드바)', () => { logoutUser(); showHome(); }],
     ['메인 (로그인 후 사이드바)', () => loginUser()],
+    ['전형일정', () => openPage('scheduleOverlay')],
     ['직업정보', () => openJobModal()],
     ['대학정보', () => openPage('univOverlay')],
     ['학과정보', () => openPage('deptOverlay')],

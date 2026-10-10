@@ -1201,9 +1201,9 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
   <div class="nav-hamburger" id="menuBtn" onclick="toggleMenu()">
     <i class="fas fa-bars"></i>
   </div>
-  <div class="icon-nav-item" onclick="openJobModal()" style="cursor:pointer;">
-    <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
-    <span class="nav-label">직업정보</span>
+  <div class="icon-nav-item" onclick="openPage('scheduleOverlay')" style="cursor:pointer;">
+    <div class="icon-circle"><i class="fas fa-calendar-alt"></i></div>
+    <span class="nav-label">전형일정</span>
   </div>
   <div class="icon-nav-item" onclick="openUnivModal()" style="cursor:pointer;">
     <div class="icon-circle"><i class="fas fa-university"></i></div>
@@ -1236,10 +1236,6 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
   <div class="icon-nav-item" onclick="openPage('consultOverlay')" style="cursor:pointer;">
     <div class="icon-circle"><i class="fas fa-clipboard-list"></i></div>
     <span class="nav-label">입학상담</span>
-  </div>
-  <div class="icon-nav-item">
-    <div class="icon-circle"><i class="fas fa-calendar-alt"></i></div>
-    <span class="nav-label">전형일정</span>
   </div>
   <div class="icon-nav-item" onclick="openCMS()" style="cursor:pointer;">
     <div class="icon-circle"><i class="fas fa-cogs"></i></div>
@@ -1642,6 +1638,12 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
 }
 .job-visa-title { font-size: 15px; font-weight: 700; color: #12796f; margin-bottom: 8px; }
 .job-visa-text { font-size: 13px; color: #444; line-height: 1.7; }
+/* 학과정보의 '졸업 후 진로' */
+.career-box { margin-top: 24px; background: #f0faf9; border: 1px solid #c8ebe8; border-radius: 10px; padding: 18px 20px; }
+.career-sub { font-size: 13px; font-weight: 700; color: #333; margin-top: 14px; }
+.career-box .career-tags { padding: 10px 0 0; }
+.career-more { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 600; color: #2db4a8; }
+.career-more:hover { text-decoration: underline; }
 
 .job-modal-body {
   display: flex;
@@ -2497,6 +2499,18 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
       </table>
       <div class="pagination" id="deptPagination"></div>
       <p class="table-note">※ 표의 내용은 참고용 예시입니다. 지원 전 각 대학 모집요강을 반드시 확인하세요.</p>
+
+      <div class="career-box">
+        <div class="job-visa-title"><i class="fas fa-briefcase"></i> 졸업 후 진로</div>
+        <div class="job-visa-text" data-i18n="job.visa">한국 대학을 졸업한 유학생은 보통 <strong>구직(D-10) 비자</strong>로 일자리를 찾은 뒤, 전공·경력과 관련된 직종에 취업하면 <strong>특정활동(E-7) 비자</strong> 등 취업 비자로 변경합니다.<br>비자 요건은 바뀔 수 있으므로 하이코리아(www.hikorea.go.kr) 또는 외국인종합안내센터(☎1345)에서 꼭 확인하세요.</div>
+        <div class="career-sub">유학생 선호 직종 (이중언어 활용)</div>
+        <div class="job-tags career-tags">
+          <span class="job-tag">통번역사</span><span class="job-tag">해외영업</span><span class="job-tag">무역전문가</span>
+          <span class="job-tag">관광통역안내사</span><span class="job-tag">한국어 강사</span><span class="job-tag">유학상담사</span>
+          <span class="job-tag">해외마케터</span><span class="job-tag">물류관리사</span><span class="job-tag">승무원</span>
+        </div>
+        <a href="#" class="career-more" onclick="openJobModal(); return false;">직업정보 더 보기 ›</a>
+      </div>
     </div>
   </div>
 </div>
@@ -2858,6 +2872,61 @@ a.adm-result-btn { display: inline-block; }
 </div>
 
 
+
+<!-- ===== 전형일정 ===== -->
+<style>
+.schedule-wrap { max-width: 1100px; margin: 0 auto; padding: 26px 40px; }
+.schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.schedule-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 22px 24px; }
+.schedule-card h2 { font-size: 18px; font-weight: 800; color: #222; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.schedule-card h2 i { color: #2db4a8; }
+.schedule-tip { margin-top: 20px; background: #f0faf9; border: 1px solid #c8ebe8; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #444; line-height: 1.7; }
+.schedule-actions { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+.schedule-actions button { padding: 11px 22px; border-radius: 8px; border: 1px solid #2db4a8; background: #fff; color: #2db4a8; font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font); }
+.schedule-actions button.primary { background: #2db4a8; color: #fff; }
+</style>
+<div class="info-overlay" id="scheduleOverlay">
+  <div class="info-topbar">
+    <i class="fas fa-home" style="cursor:pointer;" onclick="showHome()"></i>
+    <span class="bc-sep">›</span><a href="#">입학정보센터</a>
+    <span class="bc-sep">›</span><span class="bc-cur">전형일정</span>
+    <button class="info-close-btn" onclick="showHome()"><i class="fas fa-home"></i> 홈으로</button>
+  </div>
+  <div class="info-hero">
+    <h1>전형일정</h1>
+    <p>외국인 특별전형은 대학마다 일정이 다르지만, 대체로 아래 순서로 진행됩니다.</p>
+  </div>
+  <div class="schedule-wrap">
+    <div class="schedule-grid">
+      <div class="schedule-card">
+        <h2><i class="fas fa-seedling"></i> 봄학기 입학 (3월)</h2>
+        <div class="docs-timeline">
+          <div class="docs-timeline-item"><div class="docs-timeline-period">전년도 9~11월</div><div class="docs-timeline-title">원서접수·서류 제출</div><div class="docs-timeline-desc">온라인으로 원서를 내고, 공증·아포스티유를 마친 서류를 우편 또는 방문으로 제출합니다.</div></div>
+          <div class="docs-timeline-item"><div class="docs-timeline-period">11~12월</div><div class="docs-timeline-title">서류평가·면접</div><div class="docs-timeline-desc">제출한 서류를 평가하고, 대학에 따라 대면 또는 온라인 화상면접을 봅니다.</div></div>
+          <div class="docs-timeline-item"><div class="docs-timeline-period">12~1월</div><div class="docs-timeline-title">합격자 발표</div><div class="docs-timeline-desc">대학 입학처 홈페이지에서 결과를 확인합니다.</div></div>
+          <div class="docs-timeline-item"><div class="docs-timeline-period">1~2월</div><div class="docs-timeline-title">등록·비자 준비</div><div class="docs-timeline-desc">등록금을 내면 대학이 표준입학허가서를 발급하며, 이를 가지고 주중 한국 공관에서 D-2(유학) 비자를 신청합니다.</div></div>
+          <div class="docs-timeline-item"><div class="docs-timeline-period">2월 말~3월</div><div class="docs-timeline-title">입국·개강</div><div class="docs-timeline-desc">입국 후 오리엔테이션에 참석하고, 90일 이내에 외국인등록을 합니다.</div></div>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <h2><i class="fas fa-leaf"></i> 가을학기 입학 (9월)</h2>
+        <div class="docs-timeline">
+          <div class="docs-timeline-item"><div class="docs-timeline-period">3~5월</div><div class="docs-timeline-title">원서접수·서류 제출</div><div class="docs-timeline-desc">온라인으로 원서를 내고, 공증·아포스티유를 마친 서류를 우편 또는 방문으로 제출합니다.</div></div>
+          <div class="docs-timeline-item"><div class="docs-timeline-period">5~6월</div><div class="docs-timeline-title">서류평가·면접</div><div class="docs-timeline-desc">제출한 서류를 평가하고, 대학에 따라 대면 또는 온라인 화상면접을 봅니다.</div></div>
+          <div class="docs-timeline-item"><div class="docs-timeline-period">6~7월</div><div class="docs-timeline-title">합격자 발표</div><div class="docs-timeline-desc">대학 입학처 홈페이지에서 결과를 확인합니다.</div></div>
+          <div class="docs-timeline-item"><div class="docs-timeline-period">7~8월</div><div class="docs-timeline-title">등록·비자 준비</div><div class="docs-timeline-desc">등록금을 내면 대학이 표준입학허가서를 발급하며, 이를 가지고 주중 한국 공관에서 D-2(유학) 비자를 신청합니다.</div></div>
+          <div class="docs-timeline-item"><div class="docs-timeline-period">8월 말~9월</div><div class="docs-timeline-title">입국·개강</div><div class="docs-timeline-desc">입국 후 오리엔테이션에 참석하고, 90일 이내에 외국인등록을 합니다.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="schedule-tip"><i class="fas fa-lightbulb" style="color:#f9a825;"></i> TOPIK 성적은 원서접수 마감 전에 필요합니다. 시험 일정은 www.topik.go.kr에서 미리 확인하세요.</div>
+    <p class="table-note">※ 위 일정은 일반적인 예시입니다. 대학마다 접수 기간과 차수(1차·2차)가 다르므로 반드시 각 대학 모집요강을 확인하세요.</p>
+    <div class="schedule-actions">
+      <button onclick="openDocsGuide()">서류준비 가이드 보기</button>
+      <button class="primary" onclick="openPage('admOverlay')">대학별 전형 보기</button>
+    </div>
+  </div>
+</div>
 
 <!-- ===== 대학별 입학요건 페이지 ===== -->
 <style>
@@ -4226,7 +4295,7 @@ function closeDocsGuide() {
         </div>
         <div class="menu-links">
           <a href="#" onclick="closeMenu(); openNoviceGuide(); return false;">외국인 전형 제도안내</a>
-          <a href="#">전형일정</a>
+          <a href="#" onclick="closeMenu(); openPage('scheduleOverlay'); return false;">전형일정</a>
           <a href="#">입학소식</a>
           <a href="#">설명회/박람회</a>
           <a href="#" onclick="closeMenu(); openPage('dataOverlay'); return false;">입학자료실</a>
@@ -4680,7 +4749,7 @@ function renderPagination(containerId, current, total, callback) {
 }
 
 /* ====== 페이지 전환 헬퍼 ====== */
-const ALL_PAGES = ['univOverlay','deptOverlay','jobOverlay','admOverlay','gradeOverlay','dataOverlay','compOverlay','consultOverlay','univGradeOverlay','loginOverlay'];
+const ALL_PAGES = ['univOverlay','deptOverlay','jobOverlay','admOverlay','gradeOverlay','dataOverlay','compOverlay','consultOverlay','univGradeOverlay','loginOverlay','scheduleOverlay'];
 
 function showPage(id) {
   document.getElementById('mainWrap').style.display = 'none';
@@ -5434,6 +5503,35 @@ const I18N = {
   "지역별 대학": { zh: "按地区找大学", en: "Universities by Region" },
   "영어 트랙 대학": { zh: "英语授课大学", en: "English-Track Universities" },
   "장학금 정보": { zh: "奖学金信息", en: "Scholarships" },
+  "외국인 특별전형은 대학마다 일정이 다르지만, 대체로 아래 순서로 진행됩니다.": { zh: "外国人特别招生的日程因大学而异，但一般按以下顺序进行。", en: "Schedules differ by university, but international admission generally follows the steps below." },
+  "봄학기 입학 (3월)": { zh: "春季入学（3月）", en: "Spring Entry (March)" },
+  "가을학기 입학 (9월)": { zh: "秋季入学（9月）", en: "Fall Entry (September)" },
+  "전년도 9~11월": { zh: "前一年9～11月", en: "Sep–Nov of the previous year" },
+  "11~12월": { zh: "11～12月", en: "Nov–Dec" },
+  "12~1월": { zh: "12～1月", en: "Dec–Jan" },
+  "1~2월": { zh: "1～2月", en: "Jan–Feb" },
+  "2월 말~3월": { zh: "2月底～3月", en: "Late Feb–Mar" },
+  "3~5월": { zh: "3～5月", en: "Mar–May" },
+  "5~6월": { zh: "5～6月", en: "May–Jun" },
+  "6~7월": { zh: "6～7月", en: "Jun–Jul" },
+  "7~8월": { zh: "7～8月", en: "Jul–Aug" },
+  "8월 말~9월": { zh: "8月底～9月", en: "Late Aug–Sep" },
+  "원서접수·서류 제출": { zh: "网上报名·提交材料", en: "Apply & Submit Documents" },
+  "서류평가·면접": { zh: "材料评审·面试", en: "Document Review & Interview" },
+  "합격자 발표": { zh: "公布录取结果", en: "Results Announced" },
+  "등록·비자 준비": { zh: "缴费注册·准备签证", en: "Enrollment & Visa" },
+  "입국·개강": { zh: "入境·开学", en: "Arrival & Semester Start" },
+  "온라인으로 원서를 내고, 공증·아포스티유를 마친 서류를 우편 또는 방문으로 제출합니다.": { zh: "在网上提交申请，并将已办理公证·海牙认证的材料邮寄或现场提交。", en: "Apply online, then submit your notarized and apostilled documents by mail or in person." },
+  "제출한 서류를 평가하고, 대학에 따라 대면 또는 온라인 화상면접을 봅니다.": { zh: "大学评审提交的材料，并根据学校安排进行现场或线上视频面试。", en: "Your documents are reviewed, and depending on the university you have an in-person or online video interview." },
+  "대학 입학처 홈페이지에서 결과를 확인합니다.": { zh: "在大学招生处官网查看结果。", en: "Check your result on the university’s admissions website." },
+  "등록금을 내면 대학이 표준입학허가서를 발급하며, 이를 가지고 주중 한국 공관에서 D-2(유학) 비자를 신청합니다.": { zh: "缴纳学费后，大学会签发标准入学许可书，凭此向韩国驻华使领馆申请D-2（留学）签证。", en: "After you pay tuition, the university issues a Certificate of Admission, which you use to apply for a D-2 (student) visa at a Korean embassy or consulate in China." },
+  "입국 후 오리엔테이션에 참석하고, 90일 이내에 외국인등록을 합니다.": { zh: "入境后参加新生说明会，并在90天内办理外国人登录。", en: "After arriving, attend orientation and complete alien registration within 90 days." },
+  "TOPIK 성적은 원서접수 마감 전에 필요합니다. 시험 일정은 www.topik.go.kr에서 미리 확인하세요.": { zh: "报名截止前需要TOPIK成绩，请提前在 www.topik.go.kr 查看考试日程。", en: "You need your TOPIK score before the application deadline — check test dates in advance at www.topik.go.kr." },
+  "※ 위 일정은 일반적인 예시입니다. 대학마다 접수 기간과 차수(1차·2차)가 다르므로 반드시 각 대학 모집요강을 확인하세요.": { zh: "※ 以上日程为一般示例。各大学的报名时间和批次（第1次·第2次）不同，请务必查看各大学的招生简章。", en: "※ These dates are typical examples. Application periods and rounds (1st/2nd) differ by university — always check each university’s guidelines." },
+  "서류준비 가이드 보기": { zh: "查看材料准备指南", en: "Document Guide" },
+  "대학별 전형 보기": { zh: "查看各大学招生", en: "Admissions by University" },
+  "졸업 후 진로": { zh: "毕业后的职业方向", en: "After Graduation" },
+  "직업정보 더 보기 ›": { zh: "查看更多职业信息 ›", en: "More career info ›" },
   /* 문단 블록 (data-i18n="키") */
   "logo": {
     zh: "韩国留学 <span>One Stop</span> 服务",
