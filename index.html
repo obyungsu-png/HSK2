@@ -1287,7 +1287,7 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
             지원 절차와 필요서류를 쉽게 안내해 드립니다.
           </div>
           <div class="banner-btns">
-            <button class="banner-btn" style="background:#2196f3;color:#fff;">가이드 보기 ›</button>
+            <button class="banner-btn" style="background:#2196f3;color:#fff;" onclick="openNoviceGuide()">가이드 보기 ›</button>
           </div>
         </div>
         <div class="banner-illustration"><i class="fas fa-book-open main-icon"></i></div>
@@ -1451,7 +1451,7 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
           <div class="step-sub">국적/학력/어학</div>
           <div class="step-name">자격확인</div>
           <div class="step-links">
-            <a href="#">자격요건 입력</a>
+            <a href="#" onclick="openGuideModal(); return false;">자격요건 입력</a>
           </div>
         </div>
         <div class="step-card">
@@ -1459,8 +1459,8 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
           <div class="step-sub">지원 가능한</div>
           <div class="step-name">대학/전형선택</div>
           <div class="step-links">
-            <a href="#">대학검색</a>
-            <a href="#">학과검색</a>
+            <a href="#" onclick="openUnivModal(); return false;">대학검색</a>
+            <a href="#" onclick="openDeptModal(); return false;">학과검색</a>
           </div>
         </div>
         <div class="step-card">
@@ -1468,7 +1468,7 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
           <div class="step-sub">자격분석</div>
           <div class="step-name">결과분석</div>
           <div class="step-links">
-            <a href="#">분석 결과확인</a>
+            <a href="#" onclick="openPage('univGradeOverlay'); return false;">분석 결과확인</a>
           </div>
         </div>
         <div class="step-card">
@@ -1476,7 +1476,7 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
           <div class="step-sub">전문상담</div>
           <div class="step-name">입학상담</div>
           <div class="step-links">
-            <a href="#">온라인 상담</a>
+            <a href="#" onclick="openPage('consultOverlay'); return false;">온라인 상담</a>
           </div>
         </div>
       </div>
@@ -1505,7 +1505,7 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
         어학기준(TOPIK) 및 전형요소(서류·면접) 등의 입학정보를 각 대학별로 확인 및 비교할 수 있습니다.
       </div>
       <div class="eval-note">* 각 대학별 양식이 상이할 수 있습니다.</div>
-      <button class="eval-btn">전형 평가기준 확인 <i class="fas fa-arrow-right"></i></button>
+      <button class="eval-btn" onclick="openPage('admOverlay')">전형 평가기준 확인 <i class="fas fa-arrow-right"></i></button>
       <div class="eval-illustration"><i class="fas fa-search"></i></div>
     </div>
     <div class="eval-side">
@@ -1527,19 +1527,19 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
       <div class="search-section-title">대학/학과/전형 검색</div>
       <div class="search-section-desc">나에게 적합한 입학전략을 세우기 위하여 대학, 학과, 전형 검색을 통하여 다양한 입학정보를 찾을 수 있도록 도와드립니다.</div>
       <div class="color-cards">
-        <div class="color-card yellow">
+        <div class="color-card yellow" onclick="openUnivModal()">
           <div class="card-title">대학정보</div>
-          <div class="card-desc">외국인 전형 실시 대학의 교육여건, 설치학과 등의 기본 정보 및 모집요강, 입학 소식 등의 정보</div>
+          <div class="card-desc">외국인 유학생을 모집하는 대학의 모집 학기, 수업 트랙(한국어·영어), 어학 기준, 홈페이지 정보</div>
           <div class="card-icon"><i class="fas fa-university"></i></div>
         </div>
-        <div class="color-card green">
+        <div class="color-card green" onclick="openDeptModal()">
           <div class="card-title">학과정보</div>
-          <div class="card-desc">교육목표, 교육과정, 진로취업분야, 등록금, 취업률 등 학생들이 궁금해 하는 학과의 주요정보</div>
+          <div class="card-desc">외국인 유학생이 지원할 수 있는 학과의 계열, 수업 언어, 모집 학기 정보</div>
           <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
         </div>
-        <div class="color-card orange">
+        <div class="color-card orange" onclick="openPage('admOverlay')">
           <div class="card-title">전형정보</div>
-          <div class="card-desc">전형일정이나 방법, 그리고 어떤 기준으로 학생을 선발하는지, 자격요건 등 전형에 대한 정보</div>
+          <div class="card-desc">대학별 외국인 특별전형의 지원자격, 어학 기준, 모집 학기, 전형방법(서류·면접) 정보</div>
           <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
         </div>
       </div>
@@ -1632,6 +1632,16 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
   font-weight: 800;
   color: #222;
 }
+.job-modal-hero p { font-size: 14px; color: #666; margin-top: 8px; }
+.job-visa-box {
+  background: #f0faf9;
+  border: 1px solid #c8ebe8;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+.job-visa-title { font-size: 15px; font-weight: 700; color: #12796f; margin-bottom: 8px; }
+.job-visa-text { font-size: 13px; color: #444; line-height: 1.7; }
 
 .job-modal-body {
   display: flex;
@@ -1785,6 +1795,7 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
 
     <div class="job-modal-hero">
       <h1>직업정보</h1>
+      <p>한국 대학 졸업 후의 진로를 미리 살펴보세요. 유학생이 많이 진출하는 직종과 직업별 정보를 확인할 수 있습니다.</p>
     </div>
 
     <div class="job-modal-body">
@@ -1820,7 +1831,25 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
 
       <!-- 아코디언 목록 -->
       <div class="job-acc-list">
+        <div class="job-visa-box">
+          <div class="job-visa-title"><i class="fas fa-passport"></i> 졸업 후 한국에서 일하려면?</div>
+          <div class="job-visa-text" data-i18n="job.visa">한국 대학을 졸업한 유학생은 보통 <strong>구직(D-10) 비자</strong>로 일자리를 찾은 뒤, 전공·경력과 관련된 직종에 취업하면 <strong>특정활동(E-7) 비자</strong> 등 취업 비자로 변경합니다.<br>비자 요건은 바뀔 수 있으므로 하이코리아(www.hikorea.go.kr) 또는 외국인종합안내센터(☎1345)에서 꼭 확인하세요.</div>
+        </div>
         <div class="source-note">[ 정보제공 : 한국고용정보원 고용24(구 워크넷) ]</div>
+
+        <div class="job-acc-item open">
+          <div class="job-acc-header" onclick="toggleAccordion(this)">
+            유학생 선호 직종 (이중언어 활용)
+            <i class="fas fa-chevron-down acc-icon" style="transform:rotate(180deg)"></i>
+          </div>
+          <div class="job-acc-body" style="max-height:none">
+            <div class="job-tags">
+              <span class="job-tag">통번역사</span><span class="job-tag">해외영업</span><span class="job-tag">무역전문가</span>
+              <span class="job-tag">관광통역안내사</span><span class="job-tag">한국어 강사</span><span class="job-tag">유학상담사</span>
+              <span class="job-tag">해외마케터</span><span class="job-tag">물류관리사</span><span class="job-tag">승무원</span>
+            </div>
+          </div>
+        </div>
 
         <div class="job-acc-item">
           <div class="job-acc-header" onclick="toggleAccordion(this)">
@@ -2009,6 +2038,14 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
   border-bottom: 1px solid #eee;
 }
 .info-hero h1 { font-size: 24px; font-weight: 800; color: #222; }
+.info-hero p { font-size: 14px; color: #666; margin-top: 8px; }
+
+/* 대학·학과·전형 표 */
+.track-chip { display: inline-block; padding: 2px 9px; margin: 2px; border-radius: 12px; font-size: 12px; font-weight: 600; background: #e0f5f2; color: #12796f; white-space: nowrap; }
+.track-chip.en { background: #e3f2fd; color: #1565c0; }
+.info-table td.cell-left { text-align: left; }
+.info-table td.empty-row { padding: 40px 10px; color: #999; }
+.table-note { font-size: 12px; color: #e65100; background: #fff8e1; border-radius: 6px; padding: 10px 14px; margin-top: 14px; line-height: 1.6; }
 
 /* body layout */
 .info-body {
@@ -2306,22 +2343,25 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
 }
 </style>
 
-<!-- ===== 대학정보 모달 ===== -->
+<!-- ===== 대학정보 ===== -->
 <div class="info-overlay" id="univOverlay">
   <div class="info-topbar">
     <i class="fas fa-home" style="cursor:pointer;" onclick="showHome()"></i>
     <span class="bc-sep">›</span><a href="#" onclick="showHome()">대학/학과/전형</a>
     <span class="bc-sep">›</span><a href="#">대학정보</a>
-    <span class="bc-sep">›</span><span class="bc-cur">일반대학</span>
+    <span class="bc-sep">›</span><span class="bc-cur">4년제 대학</span>
     <button class="info-close-btn" onclick="showHome()"><i class="fas fa-home"></i> 홈으로</button>
   </div>
-  <div class="info-hero"><h1>대학정보</h1></div>
+  <div class="info-hero">
+    <h1>대학정보</h1>
+    <p>외국인 유학생을 모집하는 한국 대학의 모집 학기, 수업 트랙, 어학 기준을 한눈에 확인하세요.</p>
+  </div>
 
   <div class="info-body">
     <!-- 필터 -->
     <div class="info-filter">
       <div class="tab-row">
-        <button class="tab-btn active">일반대학</button>
+        <button class="tab-btn active">4년제 대학</button>
         <button class="tab-btn">전문대학</button>
       </div>
       <div class="filter-select-box">
@@ -2331,63 +2371,69 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
         </select>
       </div>
       <div class="filter-input-row">
-        <input type="text" placeholder="대학명을 입력해주세요.">
+        <input type="text" placeholder="대학명을 입력해주세요." oninput="setFilter('univ', 'q', this.value)">
         <button><i class="fas fa-search"></i></button>
       </div>
-      <div class="filter-apply-row">
-        적용필터 <i class="fas fa-sync-alt" style="color:#2db4a8;font-size:13px;"></i>
-        <i class="fas fa-chevron-right" style="color:#aaa;font-size:12px;"></i>
+      <div class="filter-select-box"><select id="univRegionFilter" data-cms-skip onchange="setFilter('univ', 'region', this.value)"></select></div>
+      <div class="filter-select-box">
+        <select onchange="setFilter('univ', 'track', this.value)">
+          <option value="">수업 트랙 전체</option>
+          <option value="한국어">한국어 트랙</option>
+          <option value="영어">영어 트랙</option>
+        </select>
       </div>
       <button class="bookmark-btn">관심대학보기</button>
       <div class="filter-action-row">
-        <button class="btn-reset">검색조건 초기화</button>
+        <button class="btn-reset" onclick="resetFilters('univ')">검색조건 초기화</button>
         <button class="btn-save">검색조건 저장</button>
       </div>
-      <button class="filter-link-btn">검색조건설정 바로가기</button>
     </div>
 
     <!-- 테이블 -->
     <div class="info-table-area">
       <div class="table-top-row">
-        <div class="table-summary">총 <strong>220건</strong></div>
-        <select class="table-view-select"><option>대학목록 ∨</option></select>
+        <div class="table-summary">총 <strong id="univCount" data-cms-skip></strong></div>
       </div>
       <table class="info-table">
         <thead>
           <tr>
-            <th>대학명 <span class="sort-icon">▾</span></th>
-            <th>지역 <span class="sort-icon">▾</span></th>
-            <th>2026<br>경쟁률</th>
-            <th>입학정원 <span class="sort-icon">▾</span></th>
-            <th>설치학과 <span class="sort-icon">▾</span></th>
-            <th>전형정보 <span class="sort-icon">▾</span></th>
-            <th>비교</th>
+            <th>대학명</th>
+            <th>지역</th>
+            <th>모집 학기</th>
+            <th>수업 트랙</th>
+            <th>어학 기준</th>
+            <th>외국인 전형</th>
+            <th>홈페이지</th>
             <th>★</th>
           </tr>
         </thead>
         <tbody id="univTableBody" data-cms-list="univ"></tbody>
       </table>
       <div class="pagination" id="univPagination"></div>
+      <p class="table-note">※ 표의 내용은 참고용 예시입니다. 지원 전 각 대학 모집요강을 반드시 확인하세요.</p>
     </div>
   </div>
 </div>
 
-<!-- ===== 학과정보 모달 ===== -->
+<!-- ===== 학과정보 ===== -->
 <div class="info-overlay" id="deptOverlay">
   <div class="info-topbar">
     <i class="fas fa-home" style="cursor:pointer;" onclick="showHome()"></i>
     <span class="bc-sep">›</span><a href="#" onclick="showHome()">대학/학과/전형</a>
     <span class="bc-sep">›</span><a href="#">학과정보</a>
-    <span class="bc-sep">›</span><span class="bc-cur">일반대학</span>
+    <span class="bc-sep">›</span><span class="bc-cur">4년제 대학</span>
     <button class="info-close-btn" onclick="showHome()"><i class="fas fa-home"></i> 홈으로</button>
   </div>
-  <div class="info-hero"><h1>학과정보</h1></div>
+  <div class="info-hero">
+    <h1>학과정보</h1>
+    <p>외국인 유학생이 지원할 수 있는 학과의 계열, 수업 언어(한국어·영어), 모집 학기를 확인하세요.</p>
+  </div>
 
   <div class="info-body">
     <!-- 필터 -->
     <div class="info-filter">
       <div class="tab-row">
-        <button class="tab-btn active">일반대학</button>
+        <button class="tab-btn active">4년제 대학</button>
         <button class="tab-btn">전문대학</button>
       </div>
       <div class="filter-select-box">
@@ -2397,48 +2443,60 @@ a { text-decoration: none; color: inherit; cursor: pointer; }
         </select>
       </div>
       <div class="filter-input-row">
-        <input type="text" placeholder="대학명을 입력해주세요.">
+        <input type="text" placeholder="대학명을 입력해주세요." oninput="setFilter('dept', 'univ', this.value)">
         <button><i class="fas fa-search"></i></button>
       </div>
       <div class="dept-keyword-row">
-        <label>학과 <i class="fas fa-sync-alt" style="color:#2db4a8;font-size:11px;"></i></label>
+        <label>학과</label>
         <div class="dept-keyword-input">
-          <input type="text" placeholder="학과관련 키워드">
+          <input type="text" placeholder="학과관련 키워드" oninput="setFilter('dept', 'q', this.value)">
           <button><i class="fas fa-search"></i></button>
         </div>
       </div>
-      <div class="filter-apply-row">
-        적용필터 <i class="fas fa-sync-alt" style="color:#2db4a8;font-size:13px;"></i>
-        <i class="fas fa-chevron-right" style="color:#aaa;font-size:12px;"></i>
+      <div class="filter-select-box">
+        <select onchange="setFilter('dept', 'field', this.value)">
+          <option value="">계열 전체</option>
+          <option value="인문">인문</option>
+          <option value="사회">사회</option>
+          <option value="자연">자연</option>
+          <option value="공학">공학</option>
+          <option value="예체능">예체능</option>
+        </select>
+      </div>
+      <div class="filter-select-box">
+        <select onchange="setFilter('dept', 'lang', this.value)">
+          <option value="">수업 언어 전체</option>
+          <option value="한국어">한국어</option>
+          <option value="영어">영어</option>
+        </select>
       </div>
       <div class="filter-action-row">
-        <button class="btn-reset">검색조건 초기화</button>
+        <button class="btn-reset" onclick="resetFilters('dept')">검색조건 초기화</button>
         <button class="btn-save">검색조건 저장</button>
       </div>
-      <button class="filter-link-btn">검색조건설정 바로가기</button>
     </div>
 
     <!-- 테이블 -->
     <div class="info-table-area">
       <div class="table-top-row">
-        <div class="table-summary">총 <strong>7,493건</strong></div>
-        <select class="table-view-select"><option>대학목록 ∨</option></select>
+        <div class="table-summary">총 <strong id="deptCount" data-cms-skip></strong></div>
       </div>
       <table class="info-table">
         <thead>
           <tr>
-            <th>학과명 <span class="sort-icon">▾</span></th>
-            <th>대학명 <span class="sort-icon">▾</span></th>
-            <th>지역 <span class="sort-icon">▾</span></th>
-            <th>2026<br>경쟁률 <span class="sort-icon">▾</span></th>
-            <th>입학정원 <span class="sort-icon">▾</span></th>
-            <th>2026<br>입학결과</th>
+            <th>학과명</th>
+            <th>대학명</th>
+            <th>지역</th>
+            <th>계열</th>
+            <th>수업 언어</th>
+            <th>모집 학기</th>
             <th>비교</th>
           </tr>
         </thead>
         <tbody id="deptTableBody" data-cms-list="dept"></tbody>
       </table>
       <div class="pagination" id="deptPagination"></div>
+      <p class="table-note">※ 표의 내용은 참고용 예시입니다. 지원 전 각 대학 모집요강을 반드시 확인하세요.</p>
     </div>
   </div>
 </div>
@@ -2542,44 +2600,52 @@ a.adm-result-btn { display: inline-block; }
     <i class="fas fa-home" style="cursor:pointer;" onclick="showHome()"></i>
     <span class="bc-sep">›</span><a href="#" onclick="showHome()">대학/학과/전형</a>
     <span class="bc-sep">›</span><a href="#">전형정보</a>
-    <span class="bc-sep">›</span><span class="bc-cur">일반대학</span>
+    <span class="bc-sep">›</span><span class="bc-cur">외국인 특별전형</span>
     <button class="info-close-btn" onclick="showHome()"><i class="fas fa-home"></i> 홈으로</button>
   </div>
-  <div class="info-hero"><h1>전형정보</h1></div>
+  <div class="info-hero">
+    <h1>전형정보</h1>
+    <p>대학별 외국인 특별전형의 지원자격, 어학 기준, 모집 학기, 전형방법을 비교해 보세요.</p>
+  </div>
   <div class="info-body">
     <div class="info-filter">
       <div class="tab-row">
-        <button class="tab-btn active">일반대학</button>
+        <button class="tab-btn active">4년제 대학</button>
         <button class="tab-btn">전문대학</button>
       </div>
       <div class="filter-select-box"><select><option>2027학년도 봄학기(3월 입학)</option><option>2027학년도 가을학기(9월 입학)</option></select></div>
-      <div class="filter-input-row"><input type="text" placeholder="대학명을 입력해주세요."><button><i class="fas fa-search"></i></button></div>
-      <div class="dept-keyword-row"><label>학과 <i class="fas fa-sync-alt" style="color:#2db4a8;font-size:11px;"></i></label><div class="dept-keyword-input"><input type="text" placeholder="학과관련 키워드"><button><i class="fas fa-search"></i></button></div></div>
-      <div class="dept-keyword-row"><label>전형 <i class="fas fa-sync-alt" style="color:#2db4a8;font-size:11px;"></i></label><div class="dept-keyword-input"><input type="text" placeholder="전형관련 키워드"><button><i class="fas fa-search"></i></button></div></div>
-      <div class="filter-apply-row">적용필터 <i class="fas fa-sync-alt" style="color:#2db4a8;font-size:13px;"></i><i class="fas fa-chevron-right" style="color:#aaa;font-size:12px;"></i></div>
+      <div class="filter-input-row"><input type="text" placeholder="대학명을 입력해주세요." oninput="setFilter('adm', 'univ', this.value)"><button><i class="fas fa-search"></i></button></div>
+      <div class="dept-keyword-row"><label>전형</label><div class="dept-keyword-input"><input type="text" placeholder="전형관련 키워드" oninput="setFilter('adm', 'q', this.value)"><button><i class="fas fa-search"></i></button></div></div>
+      <div class="filter-select-box">
+        <select onchange="setFilter('adm', 'lang', this.value)">
+          <option value="">어학 기준 전체</option>
+          <option value="3급">TOPIK 3급</option>
+          <option value="4급">TOPIK 4급</option>
+          <option value="영어">영어 성적</option>
+        </select>
+      </div>
       <button class="bookmark-btn">관심전형보기</button>
-      <div class="filter-action-row"><button class="btn-reset">검색조건 초기화</button><button class="btn-save">검색조건 저장</button></div>
-      <button class="filter-link-btn">검색조건설정 바로가기</button>
+      <div class="filter-action-row"><button class="btn-reset" onclick="resetFilters('adm')">검색조건 초기화</button><button class="btn-save">검색조건 저장</button></div>
     </div>
     <div class="info-table-area">
       <div class="table-top-row">
-        <div class="table-summary">총 <strong>70,827건</strong></div>
-        <select class="table-view-select"><option>대학목록 ∨</option></select>
+        <div class="table-summary">총 <strong id="admCount" data-cms-skip></strong></div>
       </div>
       <table class="info-table">
         <thead><tr>
-          <th>대학명 <span class="sort-icon">▾</span></th>
-          <th>학과명 <span class="sort-icon">▾</span></th>
-          <th>지역 <span class="sort-icon">▾</span></th>
-          <th>2026<br>경쟁률</th>
-          <th>모집인원 <span class="sort-icon">▾</span></th>
+          <th>대학명</th>
+          <th>전형명</th>
+          <th>지원자격</th>
+          <th>어학 기준</th>
+          <th>모집 학기</th>
+          <th>전형방법</th>
           <th>모집요강</th>
-          <th>분석 · 비교</th>
           <th>★</th>
         </tr></thead>
         <tbody id="admTableBody" data-cms-list="adm"></tbody>
       </table>
-      <div class="pagination"><button class="page-btn">«</button><button class="page-btn">‹</button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn">4</button><button class="page-btn">5</button><button class="page-btn">6</button><button class="page-btn">7</button><button class="page-btn">8</button><button class="page-btn">9</button><button class="page-btn">10</button><button class="page-btn">›</button><button class="page-btn">»</button></div>
+      <div class="pagination" id="admPagination"></div>
+      <p class="table-note" data-i18n="adm.note">※ 표의 내용은 참고용 예시입니다. 원서접수는 보통 봄학기(3월) 입학은 전년도 9~11월, 가을학기(9월) 입학은 3~5월에 진행되며, 정확한 일정과 기준은 각 대학 모집요강을 반드시 확인하세요.</p>
     </div>
   </div>
 </div>
@@ -2848,24 +2914,13 @@ a.adm-result-btn { display: inline-block; }
     </div>
     <div class="info-table-area">
       <div class="table-top-row">
-        <div class="table-summary">총 <strong>213건</strong></div>
+        <div class="table-summary">총 <strong id="reqCount" data-cms-skip></strong></div>
       </div>
       <div class="grade-tabs-univ">
         <span class="grade-tab-univ active">봄학기(3월)</span>
         <span class="grade-tab-univ">가을학기(9월)</span>
       </div>
-      <div class="univ-grade-tags">
-        <span class="univ-grade-tag">강원대학교[본교] <strong>57건</strong></span>
-        <span class="univ-grade-tag">강원대학교[제2캠퍼스] <strong>21건</strong></span>
-        <span class="univ-grade-tag">건국대학교[본교] <strong>17건</strong></span>
-        <span class="univ-grade-tag">건국대학교[글로컬캠퍼스] <strong>15건</strong></span>
-        <span class="univ-grade-tag">건양대학교[본교] <strong>5건</strong></span>
-        <span class="univ-grade-tag">건양대학교[제2캠퍼스] <strong>6건</strong></span>
-        <span class="univ-grade-tag">경기대학교[본교] <strong>15건</strong></span>
-        <span class="univ-grade-tag">경기대학교[서울캠퍼스] <strong>3건</strong></span>
-        <span class="univ-grade-tag">경북대학교[본교] <strong>19건</strong></span>
-        <span class="univ-grade-tag">경동대학교[메트로폴캠퍼스] <strong>3건</strong></span>
-      </div>
+      <div class="univ-grade-tags" id="reqUnivTags" data-cms-skip></div>
       <div class="know-box">
         <div class="know-title"><i class="fas fa-info-circle"></i> 알아두세요!</div>
         <div class="know-text">
@@ -2919,8 +2974,8 @@ a.adm-result-btn { display: inline-block; }
 .sns-title { font-size: 15px; font-weight: 600; color: #333; margin-bottom: 18px; }
 .sns-btn { width: 100%; padding: 14px 18px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-size: 15px; font-weight: 600; color: #333; cursor: pointer; font-family: var(--font); display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
 .sns-btn:hover { border-color: #aaa; }
-.sns-btn .naver-icon { width: 28px; height: 28px; border-radius: 50%; background: #03C75A; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; }
-.sns-btn .kakao-icon { width: 28px; height: 28px; border-radius: 50%; background: #FEE500; color: #3C1E1E; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.sns-btn .wechat-icon { width: 28px; height: 28px; border-radius: 50%; background: #07C160; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.sns-btn .google-icon { width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 1px solid #ddd; color: #4285F4; display: flex; align-items: center; justify-content: center; font-size: 14px; }
 </style>
 
 <div class="info-overlay" id="loginOverlay">
@@ -2949,8 +3004,8 @@ a.adm-result-btn { display: inline-block; }
       </div>
       <div class="sns-section">
         <div class="sns-title">SNS 계정으로 간편하게 로그인 하세요!</div>
-        <button class="sns-btn"><span class="naver-icon">N</span> 네이버 간편로그인</button>
-        <button class="sns-btn"><span class="kakao-icon"><i class="fas fa-comment"></i></span> 카카오 간편로그인</button>
+        <button class="sns-btn"><span class="wechat-icon"><i class="fab fa-weixin"></i></span> WeChat 간편로그인</button>
+        <button class="sns-btn"><span class="google-icon"><i class="fab fa-google"></i></span> Google 간편로그인</button>
       </div>
     </div>
   </div>
@@ -4059,27 +4114,30 @@ function closeDocsGuide() {
     <a href="#">저작권정책</a>
     <a href="#">제안 및 건의하기</a>
     <div class="footer-selects">
-      <select><option>관련기관</option></select>
+      <select onchange="if (this.value) window.open(this.value, '_blank', 'noopener'); this.selectedIndex = 0;">
+        <option value="">유학생 관련 기관</option>
+        <option value="https://www.studyinkorea.go.kr">Study in Korea (국립국제교육원)</option>
+        <option value="https://www.topik.go.kr">TOPIK 한국어능력시험</option>
+        <option value="https://www.hikorea.go.kr">하이코리아 (출입국·외국인 민원)</option>
+      </select>
       <select><option>Family Site</option></select>
     </div>
   </div>
   <div class="footer-body">
     <div class="footer-org">
-      <div class="footer-org-logo"><i class="fas fa-building"></i></div>
+      <div class="footer-org-logo"><i class="fas fa-graduation-cap"></i></div>
       <div class="footer-org-info">
-        <div class="org-name">한국대학교육협의회</div>
-        <span data-i18n="footer.addr1">(우)08504 서울특별시 금천구 서부샛길 606<br>
-        (가산동, 대성디폴리스 A동, 22~23층) 전화문의 : 02-6919-3960</span><br>
-        Copyright2023. KCUE all rights reserved
+        <div class="org-name">한국유학 One Stop 서비스</div>
+        중국 및 해외 학생의 한국 대학 지원을 돕는 입학 정보 서비스입니다.<br>
+        Copyright 2026. Korea Study One Stop. All rights reserved.
       </div>
     </div>
     <div class="footer-org">
-      <div class="footer-org-logo"><i class="fas fa-landmark"></i></div>
+      <div class="footer-org-logo"><i class="fas fa-hands-helping"></i></div>
       <div class="footer-org-info">
-        <div class="org-name">한국전문대학교육협의회</div>
-        <span data-i18n="footer.addr2">(우)04505 서울특별시 중구 서소문로 38 (중림동 센트럴타워 7층)</span><br>
-        TEL : 02-3145-1200 | FAX : 02-364-1584<br>
-        Copyright2023. KCUE all rights reserved
+        <div class="org-name">유학생 도움 기관</div>
+        <span data-i18n="footer.help">외국인종합안내센터 ☎ 1345 (해외에서 +82-1345, 중국어 상담 가능)<br>
+        Study in Korea www.studyinkorea.go.kr · TOPIK www.topik.go.kr · 하이코리아 www.hikorea.go.kr</span>
       </div>
     </div>
   </div>
@@ -4107,12 +4165,12 @@ function closeDocsGuide() {
           <span class="menu-cat-title">대학/학과/전형</span>
         </div>
         <div class="menu-links">
-          <a href="#">대학정보</a>
-          <a href="#">학과정보</a>
-          <a href="#">전형정보</a>
-          <a href="#">지역별검색</a>
-          <a href="#">경쟁률현황</a>
-          <a href="#">합격자현황</a>
+          <a href="#" onclick="closeMenu(); openUnivModal(); return false;">대학정보</a>
+          <a href="#" onclick="closeMenu(); openDeptModal(); return false;">학과정보</a>
+          <a href="#" onclick="closeMenu(); openPage('admOverlay'); return false;">전형정보</a>
+          <a href="#" onclick="closeMenu(); openUnivModal(); return false;">지역별 대학</a>
+          <a href="#" onclick="closeMenu(); openUnivWithTrack('영어'); return false;">영어 트랙 대학</a>
+          <a href="#" onclick="closeMenu(); openPage('dataOverlay'); return false;">장학금 정보</a>
         </div>
       </div>
 
@@ -4123,11 +4181,11 @@ function closeDocsGuide() {
           <span class="menu-cat-title">자격요건 분석</span>
         </div>
         <div class="menu-links">
-          <a href="#">외국인 지원자격 확인</a>
-          <a href="#">국적·가족관계 확인</a>
-          <a href="#">학력인정 기준</a>
-          <a href="#">어학 기준(TOPIK)</a>
-          <a href="#" class="full-width">자격요건 상세안내</a>
+          <a href="#" onclick="closeMenu(); openGuideModal(); return false;">외국인 지원자격 확인</a>
+          <a href="#" onclick="closeMenu(); openGuideModal(); return false;">국적·가족관계 확인</a>
+          <a href="#" onclick="closeMenu(); openDocsGuide(); return false;">학력인정 기준</a>
+          <a href="#" onclick="closeMenu(); openPage('univGradeOverlay'); return false;">어학 기준(TOPIK)</a>
+          <a href="#" class="full-width" onclick="closeMenu(); openGuideModal(); return false;">자격요건 상세안내</a>
         </div>
       </div>
 
@@ -4138,11 +4196,11 @@ function closeDocsGuide() {
           <span class="menu-cat-title">입학상담</span>
         </div>
         <div class="menu-links">
-          <a href="#">온라인입학상담</a>
+          <a href="#" onclick="closeMenu(); openPage('consultOverlay'); return false;">온라인입학상담</a>
           <a href="#">상담FAQ</a>
           <a href="#">전화상담 안내</a>
-          <a href="#">1:1 맞춤상담</a>
-          <a href="#" class="full-width">유학생 종합상담</a>
+          <a href="#" onclick="closeMenu(); openPage('compOverlay'); return false;">1:1 맞춤상담</a>
+          <a href="#" class="full-width" onclick="closeMenu(); openPage('consultOverlay'); return false;">유학생 종합상담</a>
         </div>
       </div>
 
@@ -4153,10 +4211,10 @@ function closeDocsGuide() {
           <span class="menu-cat-title">진로정보</span>
         </div>
         <div class="menu-links">
-          <a href="#">직업정보</a>
+          <a href="#" onclick="closeMenu(); openJobModal(); return false;">직업정보</a>
           <a href="#">직업심리검사</a>
           <a href="#">학과별 진로안내</a>
-          <a href="#">한국 취업·비자 정보</a>
+          <a href="#" onclick="closeMenu(); openJobModal(); return false;">한국 취업·비자 정보</a>
         </div>
       </div>
 
@@ -4167,12 +4225,12 @@ function closeDocsGuide() {
           <span class="menu-cat-title">입학정보센터</span>
         </div>
         <div class="menu-links">
-          <a href="#">외국인 전형 제도안내</a>
+          <a href="#" onclick="closeMenu(); openNoviceGuide(); return false;">외국인 전형 제도안내</a>
           <a href="#">전형일정</a>
           <a href="#">입학소식</a>
           <a href="#">설명회/박람회</a>
-          <a href="#">입학자료실</a>
-          <a href="#">대학별 입학정보</a>
+          <a href="#" onclick="closeMenu(); openPage('dataOverlay'); return false;">입학자료실</a>
+          <a href="#" onclick="closeMenu(); openPage('univGradeOverlay'); return false;">대학별 입학정보</a>
         </div>
       </div>
 
@@ -4197,7 +4255,7 @@ function closeDocsGuide() {
           <span class="menu-cat-title">회원서비스</span>
         </div>
         <div class="menu-links">
-          <a href="#">로그인</a>
+          <a href="#" onclick="closeMenu(); openPage('loginOverlay'); return false;">로그인</a>
           <a href="#">회원가입</a>
           <a href="#">아이디찾기</a>
           <a href="#">비밀번호찾기</a>
@@ -4218,7 +4276,7 @@ function closeDocsGuide() {
           <a href="#">일정관리</a>
           <a href="#">신청/접수</a>
           <a href="#">비자·체류 정보</a>
-          <a href="#">입학도우미</a>
+          <a href="#" onclick="closeMenu(); openNoviceGuide(); return false;">입학도우미</a>
         </div>
       </div>
 
@@ -4315,56 +4373,65 @@ function searchJobs() {
 
 
 <script>
-/* ====== 대학 데이터 ====== */
+/* ====== 대학 데이터 (외국인 유학생 모집 대학 · 참고용 예시) ======
+ * terms(모집 학기)·track(수업 트랙)처럼 여러 값은 가운데점(·)으로 구분합니다.
+ */
 const univData = [
-  { name:'가야대학교[본교]', region:'경남', su:'5.34', jeong:'3.56', capacity:405, dept:8, adm:18 },
-  { name:'가천대학교[본교]', region:'경기', su:'29.85', jeong:'9.39', capacity:3938, dept:71, adm:31 },
-  { name:'가톨릭관동대학교[본교]', region:'강원', su:'3.79', jeong:'3.59', capacity:1725, dept:36, adm:45 },
-  { name:'가톨릭꽃동네대학교[본교]', region:'충북', su:'4.59', jeong:'2.79', capacity:108, dept:2, adm:19 },
-  { name:'가톨릭대학교[본교]', region:'경기', su:'16.92', jeong:'5.73', capacity:1620, dept:49, adm:25 },
-  { name:'가톨릭대학교[제2캠퍼스]', region:'서울', su:'35.01', jeong:'3.51', capacity:173, dept:2, adm:9 },
-  { name:'가톨릭대학교[제3캠퍼스]', region:'서울', su:'1.3', jeong:'3.44', capacity:50, dept:1, adm:9 },
-  { name:'감리교신학대학교[본교]', region:'서울', su:'1.46', jeong:'2.73', capacity:192, dept:1, adm:15 },
-  { name:'강남대학교[본교]', region:'경기', su:'11.54', jeong:'6.72', capacity:1491, dept:27, adm:23 },
-  { name:'강서대학교[본교]', region:'서울', su:'12.25', jeong:'9.07', capacity:277, dept:10, adm:17 },
-  { name:'건국대학교[본교]', region:'서울', su:'22.14', jeong:'8.31', capacity:3201, dept:62, adm:38 },
-  { name:'경희대학교[본교]', region:'서울', su:'31.50', jeong:'11.22', capacity:4102, dept:84, adm:52 },
-  { name:'고려대학교[본교]', region:'서울', su:'41.20', jeong:'14.80', capacity:3580, dept:77, adm:46 },
-  { name:'서울대학교[본교]', region:'서울', su:'38.60', jeong:'12.40', capacity:3200, dept:80, adm:55 },
-  { name:'연세대학교[본교]', region:'서울', su:'36.90', jeong:'13.10', capacity:3400, dept:75, adm:48 },
+  { name:'서울대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어', lang:'TOPIK 3급 이상', url:'https://www.snu.ac.kr' },
+  { name:'연세대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 4급 이상 또는 영어 성적', url:'https://www.yonsei.ac.kr' },
+  { name:'고려대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 4급 이상 또는 영어 성적', url:'https://www.korea.ac.kr' },
+  { name:'성균관대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 4급 이상 또는 영어 성적', url:'https://www.skku.edu' },
+  { name:'한양대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 4급 이상', url:'https://www.hanyang.ac.kr' },
+  { name:'경희대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 3급 이상', url:'https://www.khu.ac.kr' },
+  { name:'중앙대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어', lang:'TOPIK 4급 이상', url:'https://www.cau.ac.kr' },
+  { name:'한국외국어대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 3급 이상', url:'https://www.hufs.ac.kr' },
+  { name:'건국대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어', lang:'TOPIK 3급 이상', url:'https://www.konkuk.ac.kr' },
+  { name:'동국대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어', lang:'TOPIK 3급 이상', url:'https://www.dongguk.edu' },
+  { name:'이화여자대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 4급 이상 또는 영어 성적', url:'https://www.ewha.ac.kr' },
+  { name:'국민대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어', lang:'TOPIK 3급 이상', url:'https://www.kookmin.ac.kr' },
+  { name:'세종대학교[본교]', region:'서울', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 3급 이상', url:'https://www.sejong.ac.kr' },
+  { name:'가천대학교[본교]', region:'경기', terms:'봄·가을', track:'한국어', lang:'TOPIK 3급 이상', url:'https://www.gachon.ac.kr' },
+  { name:'부산대학교[본교]', region:'부산', terms:'봄·가을', track:'한국어', lang:'TOPIK 3급 이상', url:'https://www.pusan.ac.kr' },
+  { name:'경북대학교[본교]', region:'대구', terms:'봄·가을', track:'한국어', lang:'TOPIK 3급 이상', url:'https://www.knu.ac.kr' },
+  { name:'우송대학교[본교]', region:'대전', terms:'봄·가을', track:'한국어·영어', lang:'TOPIK 3급 이상 또는 영어 성적', url:'https://www.wsu.ac.kr' },
+  { name:'강원대학교[본교]', region:'강원', terms:'봄·가을', track:'한국어', lang:'TOPIK 3급 이상', url:'https://www.kangwon.ac.kr' },
 ];
 
-/* ====== 학과 데이터 ====== */
+/* ====== 학과 데이터 (참고용 예시) ====== */
 const deptData = [
-  { dept:'(국제)관광경영학과', univ:'서울신학대학교 [본교]', region:'경기', su:'0', jeong:'0', capacity:0 },
-  { dept:'(국제)글로벌경영학과', univ:'서울신학대학교 [본교]', region:'경기', su:'0', jeong:'0', capacity:0 },
-  { dept:'(국제)글로벌한국어학과', univ:'서울신학대학교 [본교]', region:'경기', su:'0', jeong:'0', capacity:0 },
-  { dept:'(국제)컴퓨터공학과', univ:'서울신학대학교 [본교]', region:'경기', su:'0', jeong:'0', capacity:0 },
-  { dept:'AI 모빌리티학과', univ:'남서울대학교 [본교]', region:'충남', su:'0', jeong:'0', capacity:30 },
-  { dept:'AI 융합미디어학과', univ:'남서울대학교 [본교]', region:'충남', su:'4.51', jeong:'6.4', capacity:75 },
-  { dept:'AI·SW계열', univ:'한신대학교 [본교]', region:'경기', su:'4.39', jeong:'6.54', capacity:215 },
-  { dept:'AI·빅데이터학과', univ:'우송대학교 [본교]', region:'대전', su:'4.37', jeong:'0', capacity:16 },
-  { dept:'국제학부', univ:'서울대학교 [본교]', region:'서울', su:'0', jeong:'3.5', capacity:36 },
-  { dept:'글로벌인재학부', univ:'서울대학교 [본교]', region:'서울', su:'0', jeong:'0', capacity:0 },
-  { dept:'언더우드국제대학', univ:'연세대학교 [본교]', region:'서울', su:'12.5', jeong:'8.3', capacity:45 },
-  { dept:'국제통상학과', univ:'고려대학교 [본교]', region:'서울', su:'15.2', jeong:'9.1', capacity:60 },
-  { dept:'글로벌비즈니스학과', univ:'성균관대학교 [본교]', region:'서울', su:'11.4', jeong:'7.6', capacity:40 },
-  { dept:'한국어문학부', univ:'이화여자대학교 [본교]', region:'서울', su:'8.9', jeong:'5.2', capacity:55 },
-  { dept:'경영학과', univ:'한양대학교 [본교]', region:'서울', su:'18.7', jeong:'10.3', capacity:120 },
+  { dept:'경영학과', univ:'고려대학교[본교]', region:'서울', field:'사회', lang:'한국어', terms:'봄·가을' },
+  { dept:'국제학부', univ:'고려대학교[본교]', region:'서울', field:'사회', lang:'영어', terms:'봄·가을' },
+  { dept:'언더우드국제대학', univ:'연세대학교[본교]', region:'서울', field:'인문·사회', lang:'영어', terms:'봄·가을' },
+  { dept:'국어국문학과', univ:'서울대학교[본교]', region:'서울', field:'인문', lang:'한국어', terms:'봄·가을' },
+  { dept:'경제학과', univ:'성균관대학교[본교]', region:'서울', field:'사회', lang:'한국어', terms:'봄·가을' },
+  { dept:'미디어커뮤니케이션학과', univ:'한양대학교[본교]', region:'서울', field:'사회', lang:'한국어', terms:'봄·가을' },
+  { dept:'호텔경영학과', univ:'경희대학교[본교]', region:'서울', field:'사회', lang:'한국어', terms:'봄·가을' },
+  { dept:'경제학부', univ:'중앙대학교[본교]', region:'서울', field:'사회', lang:'한국어', terms:'봄·가을' },
+  { dept:'한국어교육과', univ:'한국외국어대학교[본교]', region:'서울', field:'인문', lang:'한국어', terms:'봄·가을' },
+  { dept:'컴퓨터공학부', univ:'건국대학교[본교]', region:'서울', field:'공학', lang:'한국어', terms:'봄·가을' },
+  { dept:'영화영상학과', univ:'동국대학교[본교]', region:'서울', field:'예체능', lang:'한국어', terms:'봄·가을' },
+  { dept:'국제학부', univ:'이화여자대학교[본교]', region:'서울', field:'사회', lang:'영어', terms:'봄·가을' },
+  { dept:'공업디자인학과', univ:'국민대학교[본교]', region:'서울', field:'예체능', lang:'한국어', terms:'봄·가을' },
+  { dept:'경영학부', univ:'세종대학교[본교]', region:'서울', field:'사회', lang:'한국어', terms:'봄·가을' },
+  { dept:'소프트웨어학과', univ:'가천대학교[본교]', region:'경기', field:'공학', lang:'한국어', terms:'봄·가을' },
+  { dept:'무역학부', univ:'부산대학교[본교]', region:'부산', field:'사회', lang:'한국어', terms:'봄·가을' },
+  { dept:'솔브릿지국제경영대학', univ:'우송대학교[본교]', region:'대전', field:'사회', lang:'영어', terms:'봄·가을' },
 ];
 
-/* ====== 전형정보 표 데이터 ====== */
+/* ====== 전형정보 데이터 (외국인 특별전형 · 참고용 예시) ====== */
 const admData = [
-  { univ:'가야대학교[본교]', dept:'간호학과(주간)', region:'경남', spring:'6.78', fall:'6.77', count:'185', file:'' },
-  { univ:'가야대학교[본교]', dept:'물리치료학과(주간)', region:'경남', spring:'7.35', fall:'6.25', count:'56', file:'' },
-  { univ:'가야대학교[본교]', dept:'방사선학과(주간)', region:'경남', spring:'7.61', fall:'11.33', count:'45', file:'' },
-  { univ:'가야대학교[본교]', dept:'사회복지상담학과(주간)', region:'경남', spring:'1.03', fall:'1', count:'40', file:'' },
-  { univ:'가야대학교[본교]', dept:'스포츠재활복지학과(주간)', region:'경남', spring:'4.95', fall:'3', count:'40', file:'' },
-  { univ:'가야대학교[본교]', dept:'자유전공학부(주간)', region:'경남', spring:'0.64', fall:'1', count:'14', file:'' },
-  { univ:'가야대학교[본교]', dept:'치유웰니스학과(주간)', region:'경남', spring:'1.21', fall:'0.25', count:'19', file:'' },
-  { univ:'가야대학교[본교]', dept:'특수교육과(주간)', region:'경남', spring:'2.04', fall:'2', count:'26', file:'' },
-  { univ:'가천대학교[본교]', dept:'AI인문대학(주간)', region:'경기', spring:'36.7', fall:'12.48', count:'290', file:'' },
-  { univ:'가천대학교[본교]', dept:'간호학과(주간)', region:'경기', spring:'35.11', fall:'4.45', count:'337', file:'' },
+  { univ:'서울대학교[본교]', track:'외국인 학부 신입학', elig:'부모 모두 외국인', lang:'TOPIK 3급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'연세대학교[본교]', track:'외국인 특별전형 (한국어 트랙)', elig:'부모 모두 외국인', lang:'TOPIK 4급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'연세대학교[본교]', track:'언더우드국제대학 (영어 트랙)', elig:'해외 고교 졸업', lang:'TOEFL·IELTS 등 영어 성적', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'고려대학교[본교]', track:'외국인 특별전형', elig:'부모 모두 외국인', lang:'TOPIK 4급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'성균관대학교[본교]', track:'외국인 특별전형', elig:'부모 모두 외국인', lang:'TOPIK 4급 이상 또는 영어 성적', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'한양대학교[본교]', track:'외국인 특별전형', elig:'부모 모두 외국인', lang:'TOPIK 4급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'경희대학교[본교]', track:'외국인 특별전형', elig:'부모 모두 외국인', lang:'TOPIK 3급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'중앙대학교[본교]', track:'외국인 특별전형', elig:'부모 모두 외국인', lang:'TOPIK 4급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'한국외국어대학교[본교]', track:'외국인 특별전형', elig:'부모 모두 외국인', lang:'TOPIK 3급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'건국대학교[본교]', track:'외국인 특별전형', elig:'부모 모두 외국인', lang:'TOPIK 3급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'우송대학교[본교]', track:'솔브릿지 (영어 트랙)', elig:'해외 고교 졸업', lang:'TOEFL·IELTS 등 영어 성적', terms:'봄·가을', method:'서류+면접', file:'' },
+  { univ:'부산대학교[본교]', track:'외국인 특별전형', elig:'부모 모두 외국인', lang:'TOPIK 3급 이상', terms:'봄·가을', method:'서류+면접', file:'' },
 ];
 
 /* ====== 메인 목록 데이터 ====== */
@@ -4438,71 +4505,154 @@ function renderResources() {
   }).join('');
 }
 
-function renderAdmTable() {
-  document.getElementById('admTableBody').innerHTML = LISTS.adm.map((d, i) => {
-    const univ = L(d.univ), url = safeUrl(d.file);
-    const guide = url
-      ? `<a class="adm-result-btn" href="${esc(mediaUrl(url))}" target="_blank" rel="noopener">${esc(t('모집요강·평가기준'))}</a>`
-      : `<button class="adm-result-btn">${esc(t('모집요강·평가기준'))}</button>`;
-    return `<tr data-cms-index="${i}"><td><div class="univ-name-cell"><div class="univ-logo">${esc(univ.charAt(0))}</div><span class="univ-name-text">${esc(univ)}</span></div></td><td>${esc(L(d.dept))}</td><td><div class="region-cell"><i class="fas fa-map-marker-alt"></i>${esc(L(d.region))}</div></td><td><div class="competition-cell"><div>${esc(t('봄'))} <span class="comp-su">${esc(d.spring)}</span></div><div>${esc(t('가을'))} <span class="comp-jeong">${esc(d.fall)}</span></div></div></td><td><a class="num-link">${esc(d.count)}</a></td><td>${guide}</td><td><button class="expand-btn">∨</button></td><td><button class="star-btn">★</button></td></tr>`;
-  }).join('');
-}
-
+/* ====== 대학·학과·전형 표 : 검색 필터 + 페이지 ====== */
 const ROWS_PER_PAGE = 10;
-let univPage = 0, deptPage = 0; // 0 = 아직 렌더링 전 (언어 변경 시 다시 그리기용)
+let univPage = 0, deptPage = 0, admPage = 0; // 0 = 아직 렌더링 전 (언어 변경 시 다시 그리기용)
 const clampPage = (page, len) => Math.min(Math.max(1, page), Math.max(1, Math.ceil(len / ROWS_PER_PAGE)));
+const koOf = v => (v && typeof v === 'object' ? v.ko || '' : String(v == null ? '' : v));
+const baseName = v => koOf(v).replace(/\s*\[.*\]$/, '');
+
+/* '한국어·영어' 처럼 가운데점으로 나눈 값: 각각 번역 */
+function partsOf(v) {
+  const shown = currentLang !== 'ko' && v && typeof v === 'object' && v[currentLang] ? v[currentLang].split('·') : null;
+  return koOf(v).split('·').map(s => s.trim()).filter(Boolean).map((k, i) => ({ ko: k, text: (shown && shown[i] && shown[i].trim()) || t(k) }));
+}
+const Lparts = v => partsOf(v).map(p => p.text).join(' · ');
+const chips = v => partsOf(v).map(p => `<span class="track-chip${p.ko === '영어' ? ' en' : ''}">${esc(p.text)}</span>`).join('');
+
+/* 검색 조건: { 목록이름: { 조건: 값 } } */
+const FILTERS = { univ: {}, dept: {}, adm: {} };
+const FILTER_RULES = {
+  univ: { q: it => [it.name], region: (it, v) => koOf(it.region) === v, track: (it, v) => koOf(it.track).includes(v) },
+  dept: { q: it => [it.dept], univ: it => [it.univ], field: (it, v) => koOf(it.field).includes(v), lang: (it, v) => koOf(it.lang).includes(v) },
+  adm: { q: it => [it.track, it.elig], univ: it => [it.univ], lang: (it, v) => koOf(it.lang).includes(v) },
+};
+function filteredRows(name) {
+  const rules = FILTER_RULES[name], f = FILTERS[name];
+  return LISTS[name].map((item, index) => ({ item, index })).filter(({ item }) => Object.entries(f).every(([key, val]) => {
+    if (!val) return true;
+    const rule = rules[key];
+    if (rule.length === 2) return rule(item, val);
+    const q = String(val).trim().toLowerCase();
+    return rule(item).some(v => (koOf(v) + ' ' + Lparts(v)).toLowerCase().includes(q));
+  }));
+}
+const TABLE_RENDER = { univ: p => renderUnivTable(p), dept: p => renderDeptTable(p), adm: p => renderAdmTable(p) };
+const TABLE_PAGE = { univ: 'univOverlay', dept: 'deptOverlay', adm: 'admOverlay' };
+function setFilter(name, key, value) {
+  FILTERS[name][key] = value;
+  TABLE_RENDER[name](1);
+}
+function resetFilters(name) {
+  FILTERS[name] = {};
+  document.querySelectorAll(`#${TABLE_PAGE[name]} .info-filter input`).forEach(el => { el.value = ''; });
+  document.querySelectorAll(`#${TABLE_PAGE[name]} .info-filter select`).forEach(el => { el.selectedIndex = 0; });
+  TABLE_RENDER[name](1);
+}
+/* 전체메뉴 '영어 트랙 대학' */
+function openUnivWithTrack(track) {
+  resetFilters('univ');
+  FILTERS.univ.track = track;
+  const sel = document.querySelector('#univOverlay select[onchange*="track"]');
+  if (sel) sel.value = track;
+  openPage('univOverlay');
+}
+/* 대학정보 → 해당 대학의 외국인 전형 보기 */
+function openAdmFor(univKo) {
+  const name = baseName(univKo);
+  resetFilters('adm');
+  FILTERS.adm.univ = name;
+  const input = document.querySelector('#admOverlay .filter-input-row input');
+  if (input) input.value = t(name);
+  showPage('admOverlay');
+  renderAdmTable(1);
+}
+function setCount(id, n) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = t(n.toLocaleString() + '건');
+}
+function pageRows(rows, page) {
+  const start = (page - 1) * ROWS_PER_PAGE;
+  return rows.slice(start, start + ROWS_PER_PAGE);
+}
+const emptyRow = cols => `<tr><td colspan="${cols}" class="empty-row">${esc(t('검색 결과가 없습니다.'))}</td></tr>`;
 
 /* ====== 대학 테이블 렌더 ====== */
 function renderUnivTable(page) {
-  page = clampPage(page, LISTS.univ.length);
-  const start = (page-1)*ROWS_PER_PAGE;
-  const rows = LISTS.univ.slice(start, start+ROWS_PER_PAGE);
-  const body = document.getElementById('univTableBody');
+  const rows = filteredRows('univ');
+  page = clampPage(page, rows.length);
   univPage = page;
-  body.innerHTML = rows.map((d, i) => `
-    <tr data-cms-index="${start + i}">
+  // 지역 선택 목록은 데이터에 있는 지역으로 만듦
+  const regionSel = document.getElementById('univRegionFilter');
+  const regions = [...new Set(LISTS.univ.map(d => koOf(d.region)).filter(Boolean))];
+  regionSel.innerHTML = `<option value="">${esc(t('지역 전체'))}</option>` +
+    regions.map(r => `<option value="${esc(r)}"${FILTERS.univ.region === r ? ' selected' : ''}>${esc(t(r))}</option>`).join('');
+  setCount('univCount', rows.length);
+  document.getElementById('univTableBody').innerHTML = rows.length ? pageRows(rows, page).map(({ item: d, index }) => {
+    const url = safeUrl(d.url);
+    return `
+    <tr data-cms-index="${index}">
       <td><div class="univ-name-cell">
         <div class="univ-logo">${esc(L(d.name).charAt(0))}</div>
         <span class="univ-name-text">${esc(L(d.name))}</span>
       </div></td>
       <td><div class="region-cell"><i class="fas fa-map-marker-alt"></i>${esc(L(d.region))}</div></td>
-      <td><div class="competition-cell">
-        <div>${esc(t('봄'))} <span class="comp-su">${esc(d.su)}</span></div>
-        <div>${esc(t('가을'))} <span class="comp-jeong">${esc(d.jeong)}</span></div>
-      </div></td>
-      <td><a class="num-link" href="#">${Number(d.capacity).toLocaleString()}</a></td>
-      <td><a class="num-link" href="#">${esc(d.dept)}</a></td>
-      <td><a class="num-link" href="#">${esc(d.adm)}</a></td>
-      <td><button class="compare-btn">${esc(t('✓ 비교'))}</button></td>
+      <td>${esc(Lparts(d.terms))}</td>
+      <td>${chips(d.track)}</td>
+      <td class="cell-left">${esc(L(d.lang))}</td>
+      <td><button class="compare-btn" onclick="openAdmFor(LISTS.univ[${index}].name)">${esc(t('전형 보기'))}</button></td>
+      <td>${url ? `<a class="compare-btn" href="${esc(url)}" target="_blank" rel="noopener">${esc(t('바로가기'))} ↗</a>` : '-'}</td>
       <td><button class="star-btn">★</button></td>
-    </tr>`).join('');
-  renderPagination('univPagination', page, Math.ceil(LISTS.univ.length/ROWS_PER_PAGE), renderUnivTable);
+    </tr>`;
+  }).join('') : emptyRow(8);
+  renderPagination('univPagination', page, Math.ceil(rows.length/ROWS_PER_PAGE), renderUnivTable);
 }
 
 /* ====== 학과 테이블 렌더 ====== */
 function renderDeptTable(page) {
-  page = clampPage(page, LISTS.dept.length);
-  const start = (page-1)*ROWS_PER_PAGE;
-  const rows = LISTS.dept.slice(start, start+ROWS_PER_PAGE);
-  const body = document.getElementById('deptTableBody');
+  const rows = filteredRows('dept');
+  page = clampPage(page, rows.length);
   deptPage = page;
-  body.innerHTML = rows.map((d, i) => `
-    <tr data-cms-index="${start + i}">
+  setCount('deptCount', rows.length);
+  document.getElementById('deptTableBody').innerHTML = rows.length ? pageRows(rows, page).map(({ item: d, index }) => `
+    <tr data-cms-index="${index}">
       <td style="text-align:left;font-weight:600;">${esc(L(d.dept))}</td>
       <td><div class="univ-name-cell" style="justify-content:center;">
         <div class="univ-logo" style="width:28px;height:28px;font-size:11px;">${esc(L(d.univ).charAt(0))}</div>
         <span style="font-size:12px;">${esc(L(d.univ))}</span>
       </div></td>
       <td><div class="region-cell"><i class="fas fa-map-marker-alt"></i>${esc(L(d.region))}</div></td>
-      <td><div class="competition-cell">
-        <div>${esc(t('봄'))} <span class="comp-su">${esc(d.su)}</span></div>
-        <div>${esc(t('가을'))} <span class="comp-jeong">${esc(d.jeong)}</span></div>
-      </div></td>
-      <td><a class="num-link" href="#">${esc(d.capacity)}</a></td>
-      <td><button class="result-btn">${esc(t('입학결과'))}</button></td>
+      <td>${esc(Lparts(d.field))}</td>
+      <td>${chips(d.lang)}</td>
+      <td>${esc(Lparts(d.terms))}</td>
       <td><button class="compare-btn">${esc(t('✓ 비교'))}</button></td>
-    </tr>`).join('');
-  renderPagination('deptPagination', page, Math.ceil(LISTS.dept.length/ROWS_PER_PAGE), renderDeptTable);
+    </tr>`).join('') : emptyRow(7);
+  renderPagination('deptPagination', page, Math.ceil(rows.length/ROWS_PER_PAGE), renderDeptTable);
+}
+
+/* ====== 전형정보 테이블 렌더 ====== */
+function renderAdmTable(page) {
+  const rows = filteredRows('adm');
+  page = clampPage(page || 1, rows.length);
+  admPage = page;
+  setCount('admCount', rows.length);
+  document.getElementById('admTableBody').innerHTML = rows.length ? pageRows(rows, page).map(({ item: d, index }) => {
+    const univ = L(d.univ), url = safeUrl(d.file);
+    const guide = url
+      ? `<a class="adm-result-btn" href="${esc(mediaUrl(url))}" target="_blank" rel="noopener">${esc(t('모집요강·평가기준'))}</a>`
+      : `<button class="adm-result-btn">${esc(t('모집요강·평가기준'))}</button>`;
+    return `<tr data-cms-index="${index}"><td><div class="univ-name-cell"><div class="univ-logo">${esc(univ.charAt(0))}</div><span class="univ-name-text">${esc(univ)}</span></div></td><td class="cell-left">${esc(L(d.track))}</td><td>${esc(L(d.elig))}</td><td class="cell-left">${esc(L(d.lang))}</td><td>${esc(Lparts(d.terms))}</td><td>${esc(L(d.method))}</td><td>${guide}</td><td><button class="star-btn">★</button></td></tr>`;
+  }).join('') : emptyRow(8);
+  renderPagination('admPagination', page, Math.ceil(rows.length/ROWS_PER_PAGE), renderAdmTable);
+}
+
+/* ====== 대학별 입학요건: 전형정보에 있는 대학 목록 ====== */
+function renderReqTags() {
+  const count = new Map();
+  LISTS.adm.forEach(d => { const k = baseName(d.univ); if (k) count.set(k, (count.get(k) || 0) + 1); });
+  setCount('reqCount', LISTS.adm.length);
+  document.getElementById('reqUnivTags').innerHTML = [...count].map(([name, n]) =>
+    `<span class="univ-grade-tag" data-univ="${esc(name)}" onclick="openAdmFor(this.dataset.univ)">${esc(t(name))} <strong>${esc(t(n + '건'))}</strong></span>`).join('');
 }
 
 /* 언어 변경·관리자 수정 후 목록 다시 그리기 */
@@ -4510,7 +4660,8 @@ function renderSiteLists() {
   renderNotices();
   renderNews();
   renderResources();
-  renderAdmTable();
+  renderAdmTable(admPage || 1);
+  renderReqTags();
   if (univPage) renderUnivTable(univPage);
   if (deptPage) renderDeptTable(deptPage);
 }
@@ -4743,9 +4894,6 @@ const I18N = {
   /* 대학/학과/전형 검색 카드 / 공지 / 전화 */
   "대학/학과/전형 검색": { zh: "大学/专业/招生搜索", en: "Search Universities, Majors & Admissions" },
   "나에게 적합한 입학전략을 세우기 위하여 대학, 학과, 전형 검색을 통하여 다양한 입학정보를 찾을 수 있도록 도와드립니다.": { zh: "通过搜索大学、专业和招生信息，帮助您找到各类入学信息，制定适合自己的升学策略。", en: "Search universities, majors and admission tracks to find the information you need and plan the right strategy for you." },
-  "외국인 전형 실시 대학의 교육여건, 설치학과 등의 기본 정보 및 모집요강, 입학 소식 등의 정보": { zh: "开展外国人招生的大学的教学条件、开设专业等基本信息，以及招生简章、入学资讯等", en: "Basics on universities that admit international students: facilities, majors, application guidelines and news" },
-  "교육목표, 교육과정, 진로취업분야, 등록금, 취업률 등 학생들이 궁금해 하는 학과의 주요정보": { zh: "培养目标、课程设置、就业方向、学费、就业率等学生关心的专业主要信息", en: "Key facts students want about majors: goals, curriculum, career paths, tuition and employment rates" },
-  "전형일정이나 방법, 그리고 어떤 기준으로 학생을 선발하는지, 자격요건 등 전형에 대한 정보": { zh: "招生日程与方式、选拔标准、申请资格等招生相关信息", en: "Admission schedules and methods, selection criteria and eligibility requirements" },
   "공지사항": { zh: "公告", en: "Notices" },
   "일반": { zh: "一般", en: "General" },
   "한국유학 포털 추천 및 대화형 AI 챗봇 서비스 오픈 안내": { zh: "韩国留学门户推荐及对话式AI聊天机器人服务上线通知", en: "Launch of portal recommendations and AI chatbot service" },
@@ -4849,8 +4997,7 @@ const I18N = {
   "원예치료사": { zh: "园艺治疗师", en: "Horticultural Therapist" },
   /* 대학/학과/전형 목록 페이지 */
   "대학/학과/전형": { zh: "大学/专业/招生", en: "Universities / Majors / Admissions" },
-  "일반대학": { zh: "普通大学", en: "Universities" },
-  "전문대학": { zh: "专科大学", en: "Junior Colleges" },
+  "전문대학": { zh: "专科大学", en: "Colleges" },
   "2027학년도 봄학기(3월 입학)": { zh: "2027学年度 春季学期（3月入学）", en: "2027 Spring (March entry)" },
   "2027학년도 가을학기(9월 입학)": { zh: "2027学年度 秋季学期（9月入学）", en: "2027 Fall (September entry)" },
   "대학명을 입력해주세요.": { zh: "请输入大学名称。", en: "Enter a university name." },
@@ -4860,89 +5007,40 @@ const I18N = {
   "검색조건 저장": { zh: "保存条件", en: "Save" },
   "검색조건설정 바로가기": { zh: "前往搜索条件设置", en: "Search Settings" },
   "총": { zh: "共", en: "Total" },
-  "대학목록 ∨": { zh: "大学列表 ∨", en: "University List ∨" },
   "대학명": { zh: "大学名称", en: "University" },
   "지역": { zh: "地区", en: "Region" },
-  "경쟁률": { zh: "竞争率", en: "Competition" },
-  "입학정원": { zh: "招生总额", en: "Capacity" },
-  "설치학과": { zh: "开设专业", en: "Majors" },
   "비교": { zh: "比较", en: "Compare" },
   "✓ 비교": { zh: "✓ 比较", en: "✓ Compare" },
   "학과": { zh: "专业", en: "Major" },
   "학과관련 키워드": { zh: "专业关键词", en: "Major keyword" },
   "학과명": { zh: "专业名称", en: "Major" },
-  "입학결과": { zh: "入学结果", en: "Results" },
   "전형": { zh: "招生类型", en: "Admission Type" },
   "전형관련 키워드": { zh: "招生关键词", en: "Admission keyword" },
   "관심전형보기": { zh: "查看关注的招生", en: "Saved Admissions" },
-  "모집인원": { zh: "招生人数", en: "Openings" },
   "모집요강": { zh: "招生简章", en: "Guidelines" },
-  "분석 · 비교": { zh: "分析 · 比较", en: "Analyze · Compare" },
   "모집요강·평가기준": { zh: "招生简章·评价标准", en: "Guidelines & Criteria" },
   "봄": { zh: "春季", en: "Spring" },
   "가을": { zh: "秋季", en: "Fall" },
-  "간호학과(주간)": { zh: "护理学专业（日间）", en: "Nursing (Day)" },
-  "물리치료학과(주간)": { zh: "物理治疗专业（日间）", en: "Physical Therapy (Day)" },
-  "방사선학과(주간)": { zh: "放射学专业（日间）", en: "Radiology (Day)" },
-  "사회복지상담학과(주간)": { zh: "社会福利咨询专业（日间）", en: "Social Welfare Counseling (Day)" },
-  "스포츠재활복지학과(주간)": { zh: "体育康复福利专业（日间）", en: "Sports Rehabilitation & Welfare (Day)" },
-  "자유전공학부(주간)": { zh: "自由专业学部（日间）", en: "Undeclared Major (Day)" },
-  "치유웰니스학과(주간)": { zh: "疗愈健康专业（日间）", en: "Healing & Wellness (Day)" },
-  "특수교육과(주간)": { zh: "特殊教育专业（日间）", en: "Special Education (Day)" },
-  "AI인문대학(주간)": { zh: "AI人文学院（日间）", en: "College of AI Humanities (Day)" },
-  "(국제)관광경영학과": { zh: "（国际）旅游经营专业", en: "(Intl.) Tourism Management" },
-  "(국제)글로벌경영학과": { zh: "（国际）全球经营专业", en: "(Intl.) Global Business Administration" },
-  "(국제)글로벌한국어학과": { zh: "（国际）全球韩国语专业", en: "(Intl.) Global Korean Language" },
-  "(국제)컴퓨터공학과": { zh: "（国际）计算机工程专业", en: "(Intl.) Computer Engineering" },
-  "AI 모빌리티학과": { zh: "AI出行专业", en: "AI Mobility" },
-  "AI 융합미디어학과": { zh: "AI融合媒体专业", en: "AI Convergence Media" },
-  "AI·SW계열": { zh: "AI·软件类", en: "AI & Software" },
-  "AI·빅데이터학과": { zh: "AI·大数据专业", en: "AI & Big Data" },
   "국제학부": { zh: "国际学部", en: "International Studies" },
-  "글로벌인재학부": { zh: "全球人才学部", en: "Global Talent Division" },
   "언더우드국제대학": { zh: "安德伍德国际学院", en: "Underwood International College" },
-  "국제통상학과": { zh: "国际通商专业", en: "International Trade" },
-  "글로벌비즈니스학과": { zh: "全球商务专业", en: "Global Business" },
-  "한국어문학부": { zh: "韩国语言文学部", en: "Korean Language & Literature" },
   "경영학과": { zh: "经营学专业", en: "Business Administration" },
   /* 대학명 / 캠퍼스 / 지역 ('대학교명[캠퍼스]' 는 자동 조합) */
-  "가야대학교": { zh: "伽倻大学", en: "Kaya University" },
   "가천대학교": { zh: "嘉泉大学", en: "Gachon University" },
-  "가톨릭관동대학교": { zh: "天主教关东大学", en: "Catholic Kwandong University" },
-  "가톨릭꽃동네대학교": { zh: "天主教花村大学", en: "Kkottongnae University" },
-  "가톨릭대학교": { zh: "韩国天主教大学", en: "The Catholic University of Korea" },
-  "감리교신학대학교": { zh: "监理会神学大学", en: "Methodist Theological University" },
-  "강남대학교": { zh: "江南大学", en: "Kangnam University" },
-  "강서대학교": { zh: "江西大学", en: "Gangseo University" },
   "건국대학교": { zh: "建国大学", en: "Konkuk University" },
   "경희대학교": { zh: "庆熙大学", en: "Kyung Hee University" },
   "고려대학교": { zh: "高丽大学", en: "Korea University" },
   "서울대학교": { zh: "首尔大学", en: "Seoul National University" },
   "연세대학교": { zh: "延世大学", en: "Yonsei University" },
-  "서울신학대학교": { zh: "首尔神学大学", en: "Seoul Theological University" },
-  "남서울대학교": { zh: "南首尔大学", en: "Namseoul University" },
-  "한신대학교": { zh: "韩神大学", en: "Hanshin University" },
   "우송대학교": { zh: "又松大学", en: "Woosong University" },
   "성균관대학교": { zh: "成均馆大学", en: "Sungkyunkwan University" },
   "이화여자대학교": { zh: "梨花女子大学", en: "Ewha Womans University" },
   "한양대학교": { zh: "汉阳大学", en: "Hanyang University" },
   "강원대학교": { zh: "江原大学", en: "Kangwon National University" },
-  "건양대학교": { zh: "建阳大学", en: "Konyang University" },
-  "경기대학교": { zh: "京畿大学", en: "Kyonggi University" },
   "경북대학교": { zh: "庆北大学", en: "Kyungpook National University" },
-  "경동대학교": { zh: "庆东大学", en: "Kyungdong University" },
   "본교": { zh: "本校", en: "Main Campus" },
-  "제2캠퍼스": { zh: "第二校区", en: "2nd Campus" },
-  "제3캠퍼스": { zh: "第三校区", en: "3rd Campus" },
-  "글로컬캠퍼스": { zh: "GLOCAL校区", en: "GLOCAL Campus" },
-  "서울캠퍼스": { zh: "首尔校区", en: "Seoul Campus" },
-  "메트로폴캠퍼스": { zh: "Metropole校区", en: "Metropole Campus" },
   "서울": { zh: "首尔", en: "Seoul" },
   "경기": { zh: "京畿道", en: "Gyeonggi" },
   "강원": { zh: "江原道", en: "Gangwon" },
-  "충북": { zh: "忠清北道", en: "Chungbuk" },
-  "충남": { zh: "忠清南道", en: "Chungnam" },
-  "경남": { zh: "庆尚南道", en: "Gyeongnam" },
   "대전": { zh: "大田", en: "Daejeon" },
   /* 고교 성적 */
   "마이페이지": { zh: "我的页面", en: "My Page" },
@@ -5074,8 +5172,6 @@ const I18N = {
   "로그인하기": { zh: "登录", en: "Log In" },
   "아이디 저장": { zh: "记住账号", en: "Remember ID" },
   "SNS 계정으로 간편하게 로그인 하세요!": { zh: "使用社交账号快捷登录！", en: "Log in quickly with a social account!" },
-  "네이버 간편로그인": { zh: "NAVER 快捷登录", en: "Log in with NAVER" },
-  "카카오 간편로그인": { zh: "Kakao 快捷登录", en: "Log in with Kakao" },
   "아이디 입력": { zh: "请输入账号", en: "ID" },
   "비밀번호": { zh: "密码", en: "Password" },
   /* 자격요건 가이드 */
@@ -5212,15 +5308,9 @@ const I18N = {
   "이메일주소 무단수집 거부": { zh: "拒绝擅自收集邮箱地址", en: "No Unauthorized Email Collection" },
   "저작권정책": { zh: "版权政策", en: "Copyright Policy" },
   "제안 및 건의하기": { zh: "意见与建议", en: "Suggestions" },
-  "관련기관": { zh: "相关机构", en: "Related Sites" },
-  "한국대학교육협의회": { zh: "韩国大学教育协议会", en: "Korean Council for University Education" },
-  "한국전문대학교육협의회": { zh: "韩国专门大学教育协议会", en: "Korean Council for College Education" },
   /* 전체메뉴 */
   "전체메뉴보기": { zh: "全部菜单", en: "All Menus" },
   "로그인해주세요 ›": { zh: "请登录 ›", en: "Please log in ›" },
-  "지역별검색": { zh: "按地区搜索", en: "By Region" },
-  "경쟁률현황": { zh: "竞争率现状", en: "Competition Rates" },
-  "합격자현황": { zh: "录取现状", en: "Admission Results" },
   "자격요건 분석": { zh: "申请资格分析", en: "Eligibility Analysis" },
   "외국인 지원자격 확인": { zh: "确认外国人申请资格", en: "Check Eligibility" },
   "국적·가족관계 확인": { zh: "确认国籍·家庭关系", en: "Nationality & Family" },
@@ -5247,6 +5337,103 @@ const I18N = {
   "일정관리": { zh: "日程管理", en: "My Schedule" },
   "비자·체류 정보": { zh: "签证·居留信息", en: "Visa & Stay Info" },
   "기타문의": { zh: "其他咨询", en: "Other Inquiries" },
+  /* 메인 카드 */
+  "외국인 유학생을 모집하는 대학의 모집 학기, 수업 트랙(한국어·영어), 어학 기준, 홈페이지 정보": { zh: "招收外国留学生的大学的招生学期、授课语言（韩语·英语）、语言要求及官网信息", en: "Intake terms, teaching tracks (Korean/English), language requirements and websites of universities admitting international students" },
+  "외국인 유학생이 지원할 수 있는 학과의 계열, 수업 언어, 모집 학기 정보": { zh: "外国留学生可申请专业的学科类别、授课语言及招生学期信息", en: "Fields, teaching language and intake terms of majors open to international students" },
+  "대학별 외국인 특별전형의 지원자격, 어학 기준, 모집 학기, 전형방법(서류·면접) 정보": { zh: "各大学外国人特别招生的申请资格、语言要求、招生学期及选拔方式（材料·面试）", en: "Eligibility, language requirements, intake terms and selection methods (documents, interview) for each university’s international admission" },
+  /* 직업정보 */
+  "한국 대학 졸업 후의 진로를 미리 살펴보세요. 유학생이 많이 진출하는 직종과 직업별 정보를 확인할 수 있습니다.": { zh: "提前了解从韩国大学毕业后的职业方向，查看留学生常从事的职业及各职业信息。", en: "Explore your career after graduating from a Korean university: popular jobs among international students and details for each occupation." },
+  "졸업 후 한국에서 일하려면?": { zh: "毕业后想在韩国工作？", en: "Want to work in Korea after graduation?" },
+  "유학생 선호 직종 (이중언어 활용)": { zh: "留学生热门职业（发挥双语优势）", en: "Popular with International Students (Bilingual Jobs)" },
+  "통번역사": { zh: "翻译", en: "Translator & Interpreter" },
+  "관광통역안내사": { zh: "旅游翻译导游", en: "Tourist Guide Interpreter" },
+  "한국어 강사": { zh: "韩语讲师", en: "Korean Language Instructor" },
+  "유학상담사": { zh: "留学顾问", en: "Study Abroad Counselor" },
+  "해외마케터": { zh: "海外营销人员", en: "Global Marketer" },
+  "승무원": { zh: "空乘人员", en: "Flight Attendant" },
+  /* 대학정보 */
+  "4년제 대학": { zh: "四年制大学", en: "4-Year Univ." },
+  "외국인 유학생을 모집하는 한국 대학의 모집 학기, 수업 트랙, 어학 기준을 한눈에 확인하세요.": { zh: "一览招收外国留学生的韩国大学的招生学期、授课语言和语言要求。", en: "See intake terms, teaching tracks and language requirements of Korean universities admitting international students at a glance." },
+  "지역 전체": { zh: "全部地区", en: "All Regions" },
+  "수업 트랙 전체": { zh: "全部授课语言", en: "All Tracks" },
+  "한국어 트랙": { zh: "韩语授课", en: "Korean Track" },
+  "영어 트랙": { zh: "英语授课", en: "English Track" },
+  "모집 학기": { zh: "招生学期", en: "Intake" },
+  "수업 트랙": { zh: "授课语言", en: "Track" },
+  "어학 기준": { zh: "语言要求", en: "Language Req." },
+  "외국인 전형": { zh: "外国人招生", en: "Admission" },
+  "홈페이지": { zh: "官网", en: "Website" },
+  "전형 보기": { zh: "查看招生", en: "View" },
+  "바로가기": { zh: "前往", en: "Visit" },
+  "검색 결과가 없습니다.": { zh: "没有搜索结果。", en: "No results found." },
+  "※ 표의 내용은 참고용 예시입니다. 지원 전 각 대학 모집요강을 반드시 확인하세요.": { zh: "※ 表中内容仅为参考示例。申请前请务必查看各大学的招生简章。", en: "※ The table shows sample information for reference only. Always check each university’s official application guidelines before applying." },
+  /* 학과정보 */
+  "외국인 유학생이 지원할 수 있는 학과의 계열, 수업 언어(한국어·영어), 모집 학기를 확인하세요.": { zh: "查看外国留学生可申请专业的学科类别、授课语言（韩语·英语）和招生学期。", en: "Check the field, teaching language (Korean/English) and intake terms of majors open to international students." },
+  "계열 전체": { zh: "全部类别", en: "All Fields" },
+  "인문": { zh: "人文", en: "Humanities" },
+  "사회": { zh: "社会科学", en: "Social Sciences" },
+  "자연": { zh: "自然科学", en: "Natural Sciences" },
+  "공학": { zh: "工学", en: "Engineering" },
+  "예체능": { zh: "艺术·体育", en: "Arts & Sports" },
+  "수업 언어 전체": { zh: "全部授课语言", en: "All Languages" },
+  "수업 언어": { zh: "授课语言", en: "Language" },
+  "한국어": { zh: "韩语", en: "Korean" },
+  /* 전형정보 */
+  "외국인 특별전형": { zh: "外国人特别招生", en: "International Admission" },
+  "대학별 외국인 특별전형의 지원자격, 어학 기준, 모집 학기, 전형방법을 비교해 보세요.": { zh: "比较各大学外国人特别招生的申请资格、语言要求、招生学期和选拔方式。", en: "Compare eligibility, language requirements, intake terms and selection methods across universities." },
+  "어학 기준 전체": { zh: "全部语言要求", en: "All Requirements" },
+  "TOPIK 3급": { zh: "TOPIK 3级", en: "TOPIK Level 3" },
+  "TOPIK 4급": { zh: "TOPIK 4级", en: "TOPIK Level 4" },
+  "영어 성적": { zh: "英语成绩", en: "English Scores" },
+  "전형명": { zh: "招生名称", en: "Admission Track" },
+  "지원자격": { zh: "申请资格", en: "Eligibility" },
+  "전형방법": { zh: "选拔方式", en: "Selection" },
+  "외국인 학부 신입학": { zh: "外国人本科新生入学", en: "International Freshman Admission" },
+  "외국인 특별전형 (한국어 트랙)": { zh: "外国人特别招生（韩语授课）", en: "International Admission (Korean Track)" },
+  "언더우드국제대학 (영어 트랙)": { zh: "安德伍德国际学院（英语授课）", en: "Underwood International College (English Track)" },
+  "솔브릿지 (영어 트랙)": { zh: "SolBridge（英语授课）", en: "SolBridge (English Track)" },
+  "부모 모두 외국인": { zh: "父母均为外国国籍", en: "Both parents are foreign nationals" },
+  "해외 고교 졸업": { zh: "海外高中毕业", en: "Overseas high school graduate" },
+  "TOPIK 3급 이상": { zh: "TOPIK 3级以上", en: "TOPIK Level 3+" },
+  "TOPIK 4급 이상": { zh: "TOPIK 4级以上", en: "TOPIK Level 4+" },
+  "TOPIK 3급 이상 또는 영어 성적": { zh: "TOPIK 3级以上或英语成绩", en: "TOPIK Level 3+ or English scores" },
+  "TOPIK 4급 이상 또는 영어 성적": { zh: "TOPIK 4级以上或英语成绩", en: "TOPIK Level 4+ or English scores" },
+  "TOEFL·IELTS 등 영어 성적": { zh: "TOEFL·IELTS等英语成绩", en: "English scores (TOEFL, IELTS, etc.)" },
+  "서류+면접": { zh: "材料+面试", en: "Documents + Interview" },
+  /* 대학명 / 지역 / 학과명 */
+  "중앙대학교": { zh: "中央大学", en: "Chung-Ang University" },
+  "한국외국어대학교": { zh: "韩国外国语大学", en: "Hankuk University of Foreign Studies" },
+  "동국대학교": { zh: "东国大学", en: "Dongguk University" },
+  "국민대학교": { zh: "国民大学", en: "Kookmin University" },
+  "세종대학교": { zh: "世宗大学", en: "Sejong University" },
+  "부산대학교": { zh: "釜山大学", en: "Pusan National University" },
+  "부산": { zh: "釜山", en: "Busan" },
+  "대구": { zh: "大邱", en: "Daegu" },
+  "국어국문학과": { zh: "国语国文学专业", en: "Korean Language & Literature" },
+  "경제학과": { zh: "经济学专业", en: "Economics" },
+  "경제학부": { zh: "经济学部", en: "School of Economics" },
+  "미디어커뮤니케이션학과": { zh: "媒体传播专业", en: "Media & Communication" },
+  "호텔경영학과": { zh: "酒店管理专业", en: "Hotel Management" },
+  "한국어교육과": { zh: "韩国语教育专业", en: "Korean Language Education" },
+  "컴퓨터공학부": { zh: "计算机工程学部", en: "Computer Science & Engineering" },
+  "영화영상학과": { zh: "电影影像专业", en: "Film & Visual Arts" },
+  "공업디자인학과": { zh: "工业设计专业", en: "Industrial Design" },
+  "경영학부": { zh: "经营学部", en: "School of Business" },
+  "소프트웨어학과": { zh: "软件专业", en: "Software" },
+  "무역학부": { zh: "贸易学部", en: "International Trade" },
+  "솔브릿지국제경영대학": { zh: "SolBridge国际商学院", en: "SolBridge International School of Business" },
+  /* 로그인 / 푸터 / 전체메뉴 */
+  "WeChat 간편로그인": { zh: "微信快捷登录", en: "Log in with WeChat" },
+  "Google 간편로그인": { zh: "Google 快捷登录", en: "Log in with Google" },
+  "유학생 관련 기관": { zh: "留学生相关机构", en: "Useful Links" },
+  "Study in Korea (국립국제교육원)": { zh: "Study in Korea（韩国国立国际教育院）", en: "Study in Korea (NIIED)" },
+  "TOPIK 한국어능력시험": { zh: "TOPIK 韩国语能力考试", en: "TOPIK (Test of Proficiency in Korean)" },
+  "하이코리아 (출입국·외국인 민원)": { zh: "HiKorea（出入境·外国人业务）", en: "HiKorea (Immigration Services)" },
+  "중국 및 해외 학생의 한국 대학 지원을 돕는 입학 정보 서비스입니다.": { zh: "帮助中国及海外学生申请韩国大学的入学信息服务。", en: "An admissions information service helping students from China and abroad apply to Korean universities." },
+  "유학생 도움 기관": { zh: "留学生求助机构", en: "Help for International Students" },
+  "지역별 대학": { zh: "按地区找大学", en: "Universities by Region" },
+  "영어 트랙 대학": { zh: "英语授课大学", en: "English-Track Universities" },
+  "장학금 정보": { zh: "奖学金信息", en: "Scholarships" },
   /* 문단 블록 (data-i18n="키") */
   "logo": {
     zh: "韩国留学 <span>One Stop</span> 服务",
@@ -5352,13 +5539,17 @@ const I18N = {
     zh: "• 各大学要求的材料种类和格式不同，<strong>请务必查看招生简章</strong>。<br>• 公证·海牙认证·翻译需要较长时间，<strong>请至少提前3～6个月开始准备</strong>。<br>• 本人或父母持有或曾持有韩国国籍的，外国人招生申请可能受到限制。<br>• 报名日程因大学而异，春季（3月）入学一般在前一年9～11月报名，秋季（9月）入学一般在3～5月报名。<br>• 如伪造·变造材料，将被取消录取，入学后也可能被取消学籍并注销签证，请务必注意。",
     en: "• Required documents and formats vary by university, so <strong>always check the application guidelines</strong>.<br>• Notarization, apostilles and translations take time — <strong>start at least 3–6 months ahead</strong>.<br>• If you or a parent hold or have ever held Korean citizenship, your eligibility for international admission may be restricted.<br>• Application periods vary: Spring (March) entry usually opens in September–November of the previous year, and Fall (September) entry usually in March–May.<br>• Forged or altered documents lead to cancelled admission, and even after enrollment can result in expulsion and visa cancellation."
   },
-  "footer.addr1": {
-    zh: "（邮编 08504）首尔特别市 衿川区 Seobusaet-gil 606<br>（加山洞 大成 D-Polis A栋 22～23层）咨询电话：02-6919-3960",
-    en: "(08504) 606 Seobusaet-gil, Geumcheon-gu, Seoul<br>(Gasan-dong, Daesung D-Polis Tower A, 22–23F) Tel: 02-6919-3960"
+  "job.visa": {
+    zh: "从韩国大学毕业的留学生，通常先凭<strong>求职（D-10）签证</strong>寻找工作，在与专业·经历相关的岗位就业后，再变更为<strong>特定活动（E-7）签证</strong>等就业签证。<br>签证要求可能变化，请务必通过 HiKorea（www.hikorea.go.kr）或外国人综合服务中心（☎1345）确认。",
+    en: "International graduates of Korean universities usually look for work on a <strong>job-seeking (D-10) visa</strong>, then switch to a work visa such as the <strong>special activities (E-7) visa</strong> once hired in a field related to their major or experience.<br>Visa rules can change — always check with HiKorea (www.hikorea.go.kr) or the Immigration Contact Center (☎1345)."
   },
-  "footer.addr2": {
-    zh: "（邮编 04505）首尔特别市 中区 Seosomun-ro 38（中林洞 Central Tower 7层）",
-    en: "(04505) 38 Seosomun-ro, Jung-gu, Seoul (Jungnim-dong, Central Tower 7F)"
+  "adm.note": {
+    zh: "※ 表中内容仅为参考示例。春季（3月）入学一般在前一年9～11月报名，秋季（9月）入学一般在3～5月报名，具体日程和标准请务必查看各大学的招生简章。",
+    en: "※ The table shows sample information for reference only. Applications for Spring (March) entry usually open in September–November of the previous year, and for Fall (September) entry in March–May. Always check each university’s guidelines for exact dates and requirements."
+  },
+  "footer.help": {
+    zh: "外国人综合服务中心 ☎ 1345（海外拨打 +82-1345，提供中文咨询）<br>Study in Korea www.studyinkorea.go.kr · TOPIK www.topik.go.kr · HiKorea www.hikorea.go.kr",
+    en: "Immigration Contact Center ☎ 1345 (from abroad +82-1345, Chinese available)<br>Study in Korea www.studyinkorea.go.kr · TOPIK www.topik.go.kr · HiKorea www.hikorea.go.kr"
   },
 };
 
