@@ -1,1 +1,8 @@
-{ "version": 1 }
+{
+  "version": 2,
+  "site": "hsk-portal",
+  "texts": {},
+  "lists": {},
+  "banners": {},
+  "media": []
+}

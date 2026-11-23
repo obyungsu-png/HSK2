@@ -1,5 +1,5 @@
 /*
- * 한국유학 One Stop 서비스 — 관리 화면(CMS)
+ * HSK 학습·시험 안내 — 관리 화면(CMS)
  *
  * index.html 의 '메뉴편집'을 누르면 이 파일을 불러옵니다.
  *  - 수정한 내용은 GitHub 저장소의 content.json 에 저장(게시)되고, 사이트는 열릴 때 이 파일을 읽어 반영합니다.
@@ -15,8 +15,8 @@
 (function () {
   'use strict';
 
-  const DRAFT_KEY = 'cms-draft';
-  const CONN_KEY = 'cms-github';
+  const DRAFT_KEY = 'hsk2-cms-draft-v2';
+  const CONN_KEY = 'hsk2-cms-github-v2';
   const CONTENT_PATH = 'content.json';
   const UPLOAD_DIR = 'uploads';
   const MAX_UPLOAD = 25 * 1024 * 1024;
@@ -62,68 +62,15 @@
         { key: 'date', label: '게시일', type: 'date' },
       ],
     },
-    adm: {
-      label: '전형정보 표', page: '전형정보 페이지',
-      summary: it => `${ko(it.univ)} / ${ko(it.track)}`,
-      fields: [
-        { key: 'univ', label: '대학명 (예: 고려대학교[본교])', type: 'i18n', required: true },
-        { key: 'track', label: '전형명 (예: 외국인 특별전형)', type: 'i18n', required: true },
-        { key: 'elig', label: '지원자격 (예: 부모 모두 외국인)', type: 'i18n' },
-        { key: 'lang', label: '어학 기준 (예: TOPIK 4급 이상)', type: 'i18n' },
-        { key: 'terms', label: '모집 학기 (예: 봄·가을 — 여러 개는 가운데점 · 으로 구분)', type: 'i18n' },
-        { key: 'method', label: '전형방법 (예: 서류+면접)', type: 'i18n' },
-        { key: 'file', label: '모집요강 파일 또는 주소 (선택 — [모집요강·평가기준] 버튼에 연결)', type: 'file' },
-      ],
-    },
-    univ: {
-      label: '대학 목록', page: '대학정보 페이지',
-      summary: it => ko(it.name),
-      fields: [
-        { key: 'name', label: '대학명 (예: 고려대학교[본교])', type: 'i18n', required: true },
-        { key: 'region', label: '지역 (예: 서울)', type: 'i18n' },
-        { key: 'terms', label: '모집 학기 (예: 봄·가을 — 여러 개는 가운데점 · 으로 구분)', type: 'i18n' },
-        { key: 'track', label: '수업 트랙 (예: 한국어·영어)', type: 'i18n' },
-        { key: 'lang', label: '어학 기준 (예: TOPIK 3급 이상)', type: 'i18n' },
-        { key: 'url', label: '대학 홈페이지 주소', type: 'file' },
-      ],
-    },
-    dept: {
-      label: '학과 목록', page: '학과정보 페이지',
-      summary: it => `${ko(it.dept)} / ${ko(it.univ)}`,
-      fields: [
-        { key: 'dept', label: '학과명', type: 'i18n', required: true },
-        { key: 'univ', label: '대학명 (예: 고려대학교[본교])', type: 'i18n' },
-        { key: 'region', label: '지역', type: 'i18n' },
-        { key: 'field', label: '계열 (인문 / 사회 / 자연 / 공학 / 예체능)', type: 'i18n' },
-        { key: 'lang', label: '수업 언어 (한국어 / 영어)', type: 'i18n' },
-        { key: 'terms', label: '모집 학기 (예: 봄·가을)', type: 'i18n' },
-      ],
-    },
+    levels: {label:'급수별 학습 안내',page:'급수 안내',summary:it=>'HSK '+it.number,fields:[{key:'number',label:'급수',type:'text',required:true},{key:'title',label:'제목',type:'i18n',required:true},{key:'subtitle',label:'소개',type:'i18n'},{key:'guide',label:'학습 방향',type:'i18n',multiline:true}]},
+    calendars: {label:'공식 일정 링크',page:'시험 일정',summary:it=>ko(it.title),fields:[{key:'year',label:'연도',type:'text',required:true},{key:'title',label:'제목',type:'i18n',required:true},{key:'description',label:'설명',type:'i18n'},{key:'link',label:'공식 공지 주소',type:'file',required:true}]},
+    faqs: {label:'자주 묻는 질문',page:'공지·FAQ',summary:it=>ko(it.question),fields:[{key:'question',label:'질문',type:'i18n',required:true},{key:'answer',label:'답변',type:'i18n',multiline:true,required:true}]},
   };
-
-  /* 편집 모드 도구 막대의 '페이지 이동' */
-  const closeModals = () => { closeGuideModal(); closeNoviceGuide(); closeDocsGuide(); closeMenu(); };
-  const NAV_TARGETS = [
-    ['메인 화면', () => showHome()],
-    ...[0, 1, 2, 3, 4, 5, 6].map(i => [`메인 배너 ${i + 1}`, () => { showHome(); bannerGo(i); }]),
-    ['메인 (로그인 전 사이드바)', () => { logoutUser(); showHome(); }],
-    ['메인 (로그인 후 사이드바)', () => loginUser()],
-    ['전형일정', () => openPage('scheduleOverlay')],
-    ['직업정보', () => openJobModal()],
-    ['대학정보', () => openPage('univOverlay')],
-    ['학과정보', () => openPage('deptOverlay')],
-    ['전형정보', () => openPage('admOverlay')],
-    ['대학별 입학요건', () => openPage('univGradeOverlay')],
-    ['고교 성적', () => openPage('gradeOverlay')],
-    ['입학정보자료실', () => openPage('dataOverlay')],
-    ['자기소개서·면접 상담', () => openPage('compOverlay')],
-    ['온라인입학상담', () => openPage('consultOverlay')],
-    ['로그인', () => openPage('loginOverlay')],
-    ['자격요건 가이드 (팝업)', () => openGuideModal()],
-    ['초보자 가이드 (팝업)', () => openNoviceGuide()],
-    ['서류준비 가이드 (팝업)', () => openDocsGuide()],
-    ['전체메뉴 (팝업)', () => { document.getElementById('menuOverlay').classList.add('open'); }],
-  ];
+  delete LIST_SCHEMAS.news;
+  LIST_SCHEMAS.notices.page='메인 및 공지사항';
+  LIST_SCHEMAS.resources={label:'학습 자료',page:'학습 자료실',summary:it=>ko(it.title),fields:[{key:'title',label:'제목',type:'i18n',required:true},{key:'description',label:'설명',type:'i18n'},{key:'category',label:'분류',type:'select',options:[['samples','샘플 문제'],['syllabus','시험 대강'],['guide','가이드']]},{key:'file',label:'자료 주소',type:'file',required:true},{key:'thumb',label:'표지 글자',type:'i18n'},{key:'image',label:'표지 이미지',type:'file',accept:'image/*'}]};
+  const closeModals=()=>closeMenu();
+  const NAV_TARGETS=[['메인 화면',()=>showHome()],...Object.entries(pageTitles).map(([key,title])=>[title.ko,()=>openPage(key)])];
 
   /* ---------- 상태 ---------- */
   let ready = null;        // 초기화 Promise
@@ -246,7 +193,7 @@
       const seg = location.pathname.split('/').filter(Boolean)[0];
       return { owner: m[1], repo: seg && !/\.html?$/i.test(seg) ? seg : m[1] + '.github.io' };
     }
-    return { owner: 'obyungsu-png', repo: 'koreaallmyexam2' };
+    return { owner: 'obyungsu-png', repo: 'HSK2' };
   }
   function loadConn() {
     for (const name of ['localStorage', 'sessionStorage']) {
@@ -343,6 +290,7 @@
   async function syncFromGitHub() {
     const f = await getFile(CONTENT_PATH);
     const content = f ? await readContentFile(f) : {};
+    if (!validContent(content)) throw new Error('HSK 콘텐츠 형식이 아닙니다.');
     const pending = diffList().length > 0;
     published = content;
     if (!pending) {
@@ -366,7 +314,7 @@
       const remoteContent = remote ? await readContentFile(remote) : {};
       if (hash(remoteContent) !== baseHash &&
           !confirm('수정을 시작한 뒤 다른 곳에서 먼저 게시된 내용이 있습니다.\n지금 게시하면 그 내용을 덮어씁니다. 계속할까요?')) return;
-      const next = Object.assign(clone(working), { version: 1, updatedAt: new Date().toISOString() });
+      const next = Object.assign(clone(working), { version: 2, site: 'hsk-portal', updatedAt: new Date().toISOString() });
       await putFile(CONTENT_PATH, utf8ToB64(JSON.stringify(next, null, 2) + '\n'), 'CMS: 사이트 내용 게시', remote && remote.sha);
       published = clone(next);
       working = clone(next);
@@ -861,7 +809,7 @@
       const repo = h('input', { type: 'text', class: 'cms-input', value: `${def.owner}/${def.repo}` });
       const branch = h('input', { type: 'text', class: 'cms-input', value: def.branch || 'main' });
       const token = h('input', { type: 'password', class: 'cms-input', autocomplete: 'off', placeholder: conn ? '연결됨 (바꾸려면 새 토큰 입력)' : 'github_pat_… 로 시작하는 토큰' });
-      const remember = h('input', { type: 'checkbox', checked: true });
+      const remember = h('input', { type: 'checkbox' });
       return [
         h('h2', {}, '시작하기'),
         h('p', { class: 'cms-muted' }, '이 관리 화면에서 사이트의 모든 문구(중국어·영어·한국어), 공지사항·뉴스·자료실·표 같은 목록, 배너 이미지, 첨부파일을 수정하고 올릴 수 있습니다.'),
@@ -1084,7 +1032,7 @@
     if (!file) return;
     try {
       const data = JSON.parse(await file.text());
-      if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error();
+      if (!validContent(data)) throw new Error();
       if (!confirm('불러온 내용으로 바꿀까요? (게시하기 전까지는 사이트에 반영되지 않습니다)')) return;
       working = data;
       applyWorking();
@@ -1180,7 +1128,7 @@ body.cms-editing #cms-toast{bottom:90px}
       working = clone(published);
       baseHash = hash(published);
       const d = readDraft();
-      if (d && d.content) {
+      if (d && validContent(d.content)) {
         working = d.content;
         baseHash = d.baseHash || baseHash;
         applyWorking();
