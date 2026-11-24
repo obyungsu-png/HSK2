@@ -62,14 +62,14 @@
         { key: 'date', label: '게시일', type: 'date' },
       ],
     },
-    levels: {label:'급수별 학습 안내',page:'급수 안내',summary:it=>'HSK '+it.number,fields:[{key:'number',label:'급수',type:'text',required:true},{key:'title',label:'제목',type:'i18n',required:true},{key:'subtitle',label:'소개',type:'i18n'},{key:'guide',label:'학습 방향',type:'i18n',multiline:true}]},
+    levels: {label:'급수별 학습 안내',page:'급수 안내',summary:it=>'HSK '+it.number,fields:[{key:'number',label:'급수 (숫자)',type:'text',required:true},{key:'title',label:'단계 (예: 초급, 중급)',type:'i18n',required:true},{key:'subtitle',label:'한 줄 소개',type:'i18n'},{key:'questions',label:'문항 수',type:'text'},{key:'minutes',label:'시험 시간 (분)',type:'text'},{key:'sections',label:'시험 영역 (예: 듣기·독해·쓰기)',type:'i18n'},{key:'score',label:'점수 기준',type:'i18n'},{key:'guide',label:'학습 방향',type:'i18n',multiline:true}]},
     calendars: {label:'공식 일정 링크',page:'시험 일정',summary:it=>ko(it.title),fields:[{key:'year',label:'연도',type:'text',required:true},{key:'title',label:'제목',type:'i18n',required:true},{key:'description',label:'설명',type:'i18n'},{key:'link',label:'공식 공지 주소',type:'file',required:true}]},
     faqs: {label:'자주 묻는 질문',page:'공지·FAQ',summary:it=>ko(it.question),fields:[{key:'question',label:'질문',type:'i18n',required:true},{key:'answer',label:'답변',type:'i18n',multiline:true,required:true}]},
   };
   delete LIST_SCHEMAS.news;
   LIST_SCHEMAS.notices.page='메인 및 공지사항';
   LIST_SCHEMAS.resources={label:'학습 자료',page:'학습 자료실',summary:it=>ko(it.title),fields:[{key:'title',label:'제목',type:'i18n',required:true},{key:'description',label:'설명',type:'i18n'},{key:'category',label:'분류',type:'select',options:[['samples','샘플 문제'],['syllabus','시험 대강'],['guide','가이드']]},{key:'file',label:'자료 주소',type:'file',required:true},{key:'thumb',label:'표지 글자',type:'i18n'},{key:'image',label:'표지 이미지',type:'file',accept:'image/*'}]};
-  LIST_SCHEMAS.downloads={label:'공지·FAQ 자료',page:'공지·FAQ 페이지 (자료 다운로드)',summary:it=>ko(it.title),fields:[{key:'title',label:'자료 제목',type:'i18n',required:true},{key:'file',label:'첨부파일 — [파일 올리기]로 올리거나 주소를 입력하세요',type:'file',required:true},{key:'description',label:'설명 (선택)',type:'i18n'},{key:'date',label:'게시일',type:'date'}]};
+  LIST_SCHEMAS.downloads={label:'자료 다운로드',page:'학습 자료 페이지 > 자료 다운로드 탭',summary:it=>ko(it.title),fields:[{key:'title',label:'자료 제목',type:'i18n',required:true},{key:'file',label:'첨부파일 — [파일 올리기]로 올리거나 주소를 입력하세요',type:'file',required:true},{key:'description',label:'설명 (선택)',type:'i18n'},{key:'date',label:'게시일',type:'date'}]};
   const closeModals=()=>closeMenu();
   const NAV_TARGETS=[['메인 화면',()=>showHome()],...Object.entries(pageTitles).map(([key,title])=>[title.ko,()=>openPage(key)])];
 
