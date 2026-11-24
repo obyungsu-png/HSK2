@@ -1,1 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 460" fill="none"><defs><linearGradient id="hair" x1="190" y1="50" x2="350" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#4b3935"/><stop offset="1" stop-color="#242d2a"/></linearGradient><linearGradient id="shirt" x1="200" y1="230" x2="330" y2="420" gradientUnits="userSpaceOnUse"><stop stop-color="#fffefa"/><stop offset="1" stop-color="#dceee5"/></linearGradient><linearGradient id="skin" x1="210" y1="90" x2="290" y2="230" gradientUnits="userSpaceOnUse"><stop stop-color="#ffdfbd"/><stop offset="1" stop-color="#efb38f"/></linearGradient></defs><ellipse cx="253" cy="432" rx="147" ry="17" fill="#239e72" opacity=".13"/><circle cx="254" cy="235" r="175" fill="#8ce1bf"/><circle cx="385" cy="337" r="63" fill="#ffe6a7"/><path d="M58 64h105a19 19 0 0 1 19 19v42a19 19 0 0 1-19 19h-40l-25 19 4-19H58a19 19 0 0 1-19-19V83a19 19 0 0 1 19-19" fill="white"/><text x="70" y="117" font-family="sans-serif" font-size="30" font-weight="700" fill="#087a55">你好!</text><path d="M202 117c-14-55 39-87 78-70 43-8 70 33 65 77-5 47 25 72 13 108-10 27-50 27-78 18l-72-8c-44-12-38-55-19-80z" fill="url(#hair)"/><path d="m216 354-8 78h59l13-59 13 59h64l-15-82" fill="#31594b"/><path d="M225 227c-21 3-35 19-47 39l-43-29-24 34c40 44 61 57 87 39l-3 72c43 21 105 20 152-4l-14-82c31 8 53-11 74-48l-30-26-37 36c-12-21-22-30-46-33z" fill="url(#shirt)" stroke="#c0ded0" stroke-width="2"/><path d="M240 209v29c6 17 35 19 44 0v-33" fill="url(#skin)"/><path d="M223 125c-10-7-18 1-15 16 2 13 10 20 18 16m78-30c11-7 18 0 15 15-2 13-10 20-17 17" fill="#efb38f"/><path d="M222 106c0-34 80-38 83 8l-1 43c-3 34-23 57-42 57-21 0-39-25-40-55z" fill="url(#skin)"/><path d="M218 123c-10-33 4-63 36-64 31-6 59 15 58 54-26-3-52-15-60-29-4 18-16 30-34 39" fill="url(#hair)"/><path d="M230 129q10-8 19-2m27 0q10-6 19 3" stroke="#4a3731" stroke-width="5" stroke-linecap="round"/><ellipse cx="241" cy="145" rx="7" ry="10" fill="#343530"/><ellipse cx="285" cy="145" rx="7" ry="10" fill="#343530"/><circle cx="243" cy="142" r="2.5" fill="white"/><circle cx="287" cy="142" r="2.5" fill="white"/><ellipse cx="233" cy="165" rx="10" ry="5" fill="#ed9e8d" opacity=".5"/><ellipse cx="293" cy="165" rx="10" ry="5" fill="#ed9e8d" opacity=".5"/><path d="m262 150-3 13h6" stroke="#d79778" stroke-width="2" stroke-linecap="round"/><path d="M247 179q16 19 32-1" fill="#a5584b"/><path d="m250 180 25-1q-13 9-25 1" fill="white"/><path d="M224 89c-31 55-8 91-27 129m103-128c27 58 9 90 28 127" stroke="#604941" stroke-width="8" stroke-linecap="round"/><path d="M125 245c-12-4-19-12-27-18l-26-5c-9-4-6-12 2-11l27 4-12-13c-5-7 2-13 8-7l31 27 9 16" fill="url(#skin)"/><path d="m386 234 2-25-7-27c-2-9 9-12 12-3l6 15 9-31c3-9 13-5 10 4l-7 28c14-8 24 5 18 17l-19 37" fill="url(#skin)"/><path d="m113 240 19-11 13 15-19 24z" fill="#e4f0e9"/><path d="m378 224 32 17-10 18-33-19z" fill="#e4f0e9"/><path d="M236 255q27 19 54 0" stroke="#c0dacc" stroke-width="3"/><text x="226" y="312" font-family="Arial,sans-serif" font-weight="900" font-size="37" fill="#14875f">HSK</text><path d="M236 336h55" stroke="#8dc9aa" stroke-width="4" stroke-linecap="round"/><rect x="62" y="325" width="80" height="103" rx="11" transform="rotate(-12 62 325)" fill="#f8c85c"/><path d="m77 338 42-9m-37 26 42-9m-37 26 28-6" stroke="#fff6d7" stroke-width="5" stroke-linecap="round"/><path d="m373 80 5 13 14 4-14 5-5 14-4-14-14-5 14-4z" fill="#fffdf2"/><circle cx="86" cy="277" r="7" fill="#fff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 460" fill="none">
+<defs>
+ <radialGradient id="white" cx=".34" cy=".22" r=".85"><stop stop-color="#fffefa"/><stop offset=".55" stop-color="#f5f3ed"/><stop offset=".84" stop-color="#dedfd8"/><stop offset="1" stop-color="#b6c6bb"/></radialGradient>
+ <radialGradient id="black" cx=".3" cy=".2" r=".9"><stop stop-color="#62665e"/><stop offset=".4" stop-color="#353d36"/><stop offset=".8" stop-color="#202b25"/><stop offset="1" stop-color="#14231b"/></radialGradient>
+ <radialGradient id="eye" cx=".35" cy=".25" r=".8"><stop stop-color="#6a5040"/><stop offset=".55" stop-color="#332a25"/><stop offset="1" stop-color="#171f19"/></radialGradient>
+ <radialGradient id="pink"><stop stop-color="#f0a7a0" stop-opacity=".65"/><stop offset="1" stop-color="#f0a7a0" stop-opacity="0"/></radialGradient>
+ <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#40b88a"/><stop offset=".55" stop-color="#16875e"/><stop offset="1" stop-color="#07563f"/></linearGradient>
+ <linearGradient id="book" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe4a3"/><stop offset="1" stop-color="#edb34c"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="6"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+<circle cx="252" cy="234" r="171" fill="#94dfc1" opacity=".65"/>
+<circle cx="384" cy="345" r="58" fill="#ffe4a1" opacity=".8"/>
+<ellipse cx="254" cy="423" rx="121" ry="14" fill="#286b50" opacity=".2" filter="url(#blur)"/>
+<!-- Rounded paws and body, with a single consistent upper-left light source. -->
+<ellipse cx="209" cy="387" rx="44" ry="36" transform="rotate(-13 209 387)" fill="url(#black)"/>
+<ellipse cx="300" cy="387" rx="44" ry="36" transform="rotate(13 300 387)" fill="url(#black)"/>
+<ellipse cx="253" cy="320" rx="85" ry="82" fill="url(#white)"/>
+<path d="M180 275c-20-17-37-6-47 13-8 15-11 39 4 48 18 11 34-2 43-20l20-26" fill="url(#black)"/>
+<path d="M321 279c19-1 28-16 33-34 5-18 15-31 29-24 18 8 17 31 8 52-13 31-37 48-61 39" fill="url(#black)"/>
+<ellipse cx="377" cy="239" rx="14" ry="17" transform="rotate(20 377 239)" fill="#788278" opacity=".3"/>
+<ellipse cx="369" cy="225" rx="4" ry="5" fill="#b3b5a1" opacity=".28"/>
+<ellipse cx="381" cy="224" rx="4" ry="5" fill="#b3b5a1" opacity=".22"/>
+<!-- Ears sit behind the head. -->
+<circle cx="176" cy="118" r="39" fill="url(#black)"/>
+<ellipse cx="177" cy="119" rx="21" ry="23" fill="#7a7c70" opacity=".35"/>
+<circle cx="324" cy="118" r="39" fill="url(#black)"/>
+<ellipse cx="324" cy="119" rx="21" ry="23" fill="#7a7c70" opacity=".25"/>
+<ellipse cx="251" cy="190" rx="105" ry="98" fill="url(#white)"/>
+<ellipse cx="224" cy="126" rx="43" ry="15" fill="white" opacity=".37" filter="url(#blur)"/>
+<!-- Soft asymmetric eye patches preserve a natural, friendly expression. -->
+<ellipse cx="208" cy="185" rx="27" ry="35" transform="rotate(24 208 185)" fill="url(#black)"/>
+<ellipse cx="294" cy="185" rx="27" ry="35" transform="rotate(-24 294 185)" fill="url(#black)"/>
+<ellipse cx="213" cy="184" rx="13" ry="17" fill="#fcfbf5"/>
+<ellipse cx="289" cy="184" rx="13" ry="17" fill="#fcfbf5"/>
+<ellipse cx="216" cy="187" rx="10" ry="13" fill="url(#eye)"/>
+<ellipse cx="286" cy="187" rx="10" ry="13" fill="url(#eye)"/>
+<circle cx="212" cy="180" r="4.4" fill="#fff"/>
+<circle cx="282" cy="180" r="4.4" fill="#fff"/>
+<circle cx="220" cy="192" r="1.7" fill="#fff" opacity=".8"/>
+<circle cx="290" cy="192" r="1.7" fill="#fff" opacity=".8"/>
+<ellipse cx="184" cy="221" rx="25" ry="16" fill="url(#pink)"/>
+<ellipse cx="318" cy="221" rx="25" ry="16" fill="url(#pink)"/>
+<ellipse cx="251" cy="227" rx="35" ry="25" fill="#fffdf6" opacity=".5"/>
+<path d="M239 215c0-8 24-8 24 0 0 5-8 11-12 11s-12-6-12-11" fill="url(#black)"/>
+<ellipse cx="247" cy="211" rx="5" ry="2" fill="#b5b8a9" opacity=".6"/>
+<path d="M251 225v5m-13 1q6 10 13 0 7 10 13 0" stroke="#59604f" stroke-width="2.8" stroke-linecap="round"/>
+<!-- Small scarf instead of clothing or human hands. -->
+<path d="M190 268q61 32 123-1l-2 20q-60 31-119 0z" fill="url(#green)"/>
+<path d="m271 284 15 49 21-10-15-43" fill="url(#green)"/>
+<path d="m285 296 8 26" stroke="#77d4a6" stroke-width="2" opacity=".5"/>
+<ellipse cx="279" cy="283" rx="13" ry="10" fill="#239b70"/>
+<path d="M204 273q22 10 44 10" stroke="#92ddba" stroke-width="2.5" opacity=".5" stroke-linecap="round"/>
+<!-- A neatly bound study book, with no distorted lettering. -->
+<g transform="rotate(-12 140 350)"><rect x="99" y="306" width="76" height="98" rx="10" fill="#d69a37"/><rect x="104" y="304" width="72" height="95" rx="8" fill="url(#book)"/><path d="M110 314v74" stroke="#fff1ce" stroke-width="2" opacity=".75"/><rect x="121" y="321" width="42" height="26" rx="5" fill="#fff8e6"/><text x="126" y="339" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#6e643a">HSK</text><path d="M122 360h36m-36 10h26" stroke="#fff7e3" stroke-width="3" stroke-linecap="round"/></g>
+<ellipse cx="166" cy="334" rx="17" ry="21" transform="rotate(18 166 334)" fill="url(#black)"/>
+<path d="M55 64h95a20 20 0 0 1 20 20v32a20 20 0 0 1-20 20h-23l-23 18 3-18H55a20 20 0 0 1-20-20V84a20 20 0 0 1 20-20" fill="white" opacity=".96"/>
+<text x="61" y="111" font-family="sans-serif" font-size="27" font-weight="700" fill="#087a55">你好!</text>
+<path d="m385 106 4 11 12 4-12 4-4 12-4-12-12-4 12-4z" fill="#fffdf3"/>
+</svg>
