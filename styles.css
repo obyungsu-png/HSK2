@@ -25,8 +25,8 @@
 .level-tier{font-size:12px;color:var(--muted)}.level-card .level-number{font-size:20px;line-height:1.4;letter-spacing:-.3px;color:var(--ink);margin:2px 0 6px}.level-card .level-desc{font-size:13px;line-height:1.55;color:#44574f;word-break:keep-all}.level-facts{display:block;margin-top:auto;padding-top:14px;border-top:1px solid #edf2ef;font-size:12px;color:var(--muted);line-height:1.6}.level-card .level-desc{margin-bottom:14px}.level-facts span{display:block}.level-facts span:first-child{color:var(--ink);font-weight:700}
 .version-note{background:#f0faf4;border-radius:14px}.pill{background:#087a55;border-radius:8px}
 .schedule-band{background:#f2fbf6;border-color:#e6f4eb}.calendar-panel{border-radius:22px;border-color:#dfede4;box-shadow:0 5px 0 #e4f2e9}.calendar-year,.calendar-arrow{color:#087a55}
-.learning-card{background:#fff8e8;border-color:#f3e8cb;border-radius:22px}.learning-card:nth-child(2){background:#eaf8ef;border-color:#d9efdf}.learning-card:nth-child(3){background:#ebf5fc;border-color:#daeaf5}.learning-symbol{color:#956611}.learning-card:nth-child(2) .learning-symbol{color:#16845b}.learning-card:nth-child(3) .learning-symbol{color:#327ca2}
-.resource-band{background:#fbfdfb;border-color:#edf5ef}.resource-card{border-radius:18px;border-color:#e0ece4;box-shadow:0 4px 0 #eff5f1}.resource-cover{background:#208b65;border-radius:7px 13px 13px 7px;box-shadow:4px 4px 0 #d9eade}.resource-card:nth-child(2) .resource-cover{background:#4988ab}.resource-card:nth-child(3) .resource-cover{background:#94772c}
+.learning-card,.learning-card:nth-child(n){background:#fff;border-color:#dfe8e3;border-radius:14px}.learning-card:hover{border-color:#8cc4a6}.learning-symbol,.learning-card:nth-child(n) .learning-symbol{color:#087a55;font-size:24px;margin-bottom:12px}
+.resource-band{background:#fbfdfb;border-color:#edf5ef}.resource-card{border-radius:18px;border-color:#e0ece4;box-shadow:0 4px 0 #eff5f1}.resource-cover,.resource-card:nth-child(n) .resource-cover{background:#1f7f5c;border-radius:6px 10px 10px 6px;box-shadow:3px 3px 0 #dbe9e0}
 .notice-row .notice-badge{border-radius:7px}.faq-callout{background:#edf9f1;border-radius:24px}.footer{background:#f4f9f6;border-color:#e1eee5}.footer-bottom{border-color:#dce9e0}
 .info-box{background:#f3fbf6;border-color:#dcefe2;border-left-color:#18956b;border-radius:0 16px 16px 0}.search-bar{background:#f1f9f4;border-radius:16px}.search-bar input,.search-bar select{border-color:#bdd6c7;border-radius:10px}.menu-toggle{border-radius:12px;background:#f1fbf5;border-color:#d4e9dd}
 @media(max-width:700px){.hero h1{letter-spacing:-1.2px}.hero-label{font-size:11px;padding:5px 11px}.quick-icon{width:36px;height:36px}.quick-wrap{border-radius:0 0 20px 20px}.art-seal{border-radius:20px 20px 20px 5px}.study-sheet{border-radius:22px}}
@@ -63,3 +63,10 @@
 .download-list .empty-state{padding:26px}.download-note{font-size:12px;color:var(--muted);margin-top:10px;max-width:950px}
 @media(max-width:700px){.download-row{flex-wrap:wrap;gap:12px;padding:14px}.download-ext{width:44px;height:44px}.download-info{flex-basis:calc(100% - 60px)}.download-btn{width:100%}.download-head{align-items:center}}
 .facts-4{grid-template-columns:repeat(4,1fr);margin-bottom:6px}@media(max-width:700px){.facts-4{grid-template-columns:1fr 1fr}}
+/* Section sub-navigation (시험 안내 group) and breadcrumbs */
+#detailTitle:focus{outline:none}
+#crumb{display:flex;gap:12px;align-items:center}#crumb a:hover{color:var(--red)}
+.sub-nav{display:flex;gap:6px;flex-wrap:wrap;margin:-10px 0 30px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sub-nav a{padding:8px 14px;border-radius:10px;font-size:14px;font-weight:700;color:#4b5f57;white-space:nowrap}.sub-nav a:hover{background:#f1f9f4;color:var(--ink)}
+.sub-nav a[aria-current='page']{background:#e6f5ec;color:#087a55}
+@media(max-width:700px){.utility-inner{justify-content:flex-end}.utility-inner>span{display:none}.sub-nav{flex-wrap:nowrap;overflow-x:auto;margin:-12px -18px 24px;padding:0 18px 12px;scrollbar-width:none}.sub-nav::-webkit-scrollbar{display:none}.sub-nav a{padding:7px 12px;font-size:13px}}
