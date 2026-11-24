@@ -69,6 +69,7 @@
   delete LIST_SCHEMAS.news;
   LIST_SCHEMAS.notices.page='메인 및 공지사항';
   LIST_SCHEMAS.resources={label:'학습 자료',page:'학습 자료실',summary:it=>ko(it.title),fields:[{key:'title',label:'제목',type:'i18n',required:true},{key:'description',label:'설명',type:'i18n'},{key:'category',label:'분류',type:'select',options:[['samples','샘플 문제'],['syllabus','시험 대강'],['guide','가이드']]},{key:'file',label:'자료 주소',type:'file',required:true},{key:'thumb',label:'표지 글자',type:'i18n'},{key:'image',label:'표지 이미지',type:'file',accept:'image/*'}]};
+  LIST_SCHEMAS.downloads={label:'공지·FAQ 자료',page:'공지·FAQ 페이지 (자료 다운로드)',summary:it=>ko(it.title),fields:[{key:'title',label:'자료 제목',type:'i18n',required:true},{key:'file',label:'첨부파일 — [파일 올리기]로 올리거나 주소를 입력하세요',type:'file',required:true},{key:'description',label:'설명 (선택)',type:'i18n'},{key:'date',label:'게시일',type:'date'}]};
   const closeModals=()=>closeMenu();
   const NAV_TARGETS=[['메인 화면',()=>showHome()],...Object.entries(pageTitles).map(([key,title])=>[title.ko,()=>openPage(key)])];
 
@@ -1142,6 +1143,17 @@ body.cms-editing #cms-toast{bottom:90px}
       return init().then(() => {
         openPanel(tab);
         if (conn) syncFromGitHub().catch(e => toast(e.message, 'error'));
+      });
+    },
+    // 페이지의 [자료 올리기] 버튼: GitHub에 연결돼 있으면 해당 목록의 새 항목 창을, 아니면 연결 안내를 엽니다.
+    openList(name) {
+      return init().then(async () => {
+        if (!LIST_SCHEMAS[name]) return openPanel('lists');
+        if (!conn) { openPanel('home'); toast('자료를 올리려면 먼저 GitHub에 연결해 주세요.', 'warn'); return; }
+        listTab = name;
+        openPanel('lists');
+        await syncFromGitHub().catch(e => toast(e.message, 'error')); // 최신 게시본을 받은 뒤 새 항목 창을 엽니다.
+        openItemEditor(name, -1);
       });
     },
     resumeDraft() { return init().then(refreshStatus); },
