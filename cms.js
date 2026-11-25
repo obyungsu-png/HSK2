@@ -24,10 +24,9 @@
   const LANG_LABEL = { zh: '中文', en: 'English', ko: '한국어' };
 
   /* ---------- 목록 종류와 입력 항목 ---------- */
-  const THUMB_COLORS = [['blue', '파랑'], ['green', '초록'], ['orange', '주황']];
   const LIST_SCHEMAS = {
     notices: {
-      label: '공지사항', page: '메인 화면 오른쪽',
+      label: '공지사항', page: '메인 및 공지사항',
       summary: it => ko(it.text),
       fields: [
         { key: 'badge', label: '말머리', type: 'i18n' },
@@ -36,40 +35,12 @@
         { key: 'link', label: '링크 (선택) — 주소를 입력하거나 파일을 올리세요', type: 'file' },
       ],
     },
-    news: {
-      label: '유학뉴스', page: '메인 화면 입학 주요자료',
-      summary: it => ko(it.title),
-      fields: [
-        { key: 'icon', label: '아이콘', type: 'select', options: [['newspaper', '신문'], ['file-signature', '문서'], ['question-circle', '물음표'], ['bullhorn', '확성기'], ['calendar-alt', '달력'], ['graduation-cap', '학사모'], ['passport', '여권']] },
-        { key: 'title', label: '제목', type: 'i18n', required: true },
-        { key: 'meta', label: '분류 표시 (예: 2027 외국인전형)', type: 'i18n' },
-        { key: 'link', label: '링크 (선택) — 주소를 입력하거나 파일을 올리세요', type: 'file' },
-      ],
-    },
-    resources: {
-      label: '입학정보자료실', page: '입학정보자료 페이지',
-      summary: it => ko(it.title),
-      fields: [
-        { key: 'title', label: '제목', type: 'i18n', required: true },
-        { key: 'file', label: '첨부파일 (올리면 제목 아래 파일 이름이 다운로드 링크가 됩니다)', type: 'file' },
-        { key: 'fileName', label: '첨부파일 표시 이름', type: 'i18n' },
-        { key: 'thumb', label: '표지 글자 (줄바꿈 가능)', type: 'i18n', multiline: true },
-        { key: 'color', label: '표지 색', type: 'select', options: THUMB_COLORS },
-        { key: 'image', label: '표지 이미지 (선택 — 올리면 표지 글자 대신 이미지 표시)', type: 'file', accept: 'image/*' },
-        { key: 'year', label: '학년도 (예: 2027, 공통)', type: 'i18n' },
-        { key: 'tags', label: '분류', type: 'i18n' },
-        { key: 'team', label: '작성 부서', type: 'i18n' },
-        { key: 'date', label: '게시일', type: 'date' },
-      ],
-    },
-    levels: {label:'급수별 학습 안내',page:'급수 안내',summary:it=>'HSK '+it.number,fields:[{key:'number',label:'급수 (숫자)',type:'text',required:true},{key:'title',label:'단계 (예: 초급, 중급)',type:'i18n',required:true},{key:'subtitle',label:'한 줄 소개',type:'i18n'},{key:'questions',label:'문항 수',type:'text'},{key:'minutes',label:'시험 시간 (분)',type:'text'},{key:'sections',label:'시험 영역 (예: 듣기·독해·쓰기)',type:'i18n'},{key:'score',label:'점수 기준',type:'i18n'},{key:'guide',label:'학습 방향',type:'i18n',multiline:true}]},
+    levels: {label:'급수별 학습 안내',page:'급수 안내',summary:it=>'HSK '+it.number,fields:[{key:'number',label:'급수 (숫자 또는 7~9)',type:'text',required:true},{key:'title',label:'단계 (예: 초급, 중급, 고급)',type:'i18n',required:true},{key:'subtitle',label:'한 줄 소개',type:'i18n'},{key:'questions',label:'문항 수',type:'text'},{key:'minutes',label:'시험 시간 (분)',type:'text'},{key:'sections',label:'시험 영역 (예: 듣기·독해·쓰기)',type:'i18n'},{key:'score',label:'점수 기준',type:'i18n'},{key:'guide',label:'학습 방향',type:'i18n',multiline:true}]},
     calendars: {label:'공식 일정 링크',page:'시험 일정',summary:it=>ko(it.title),fields:[{key:'year',label:'연도',type:'text',required:true},{key:'title',label:'제목',type:'i18n',required:true},{key:'description',label:'설명',type:'i18n'},{key:'link',label:'공식 공지 주소',type:'file',required:true}]},
     faqs: {label:'자주 묻는 질문',page:'공지·FAQ',summary:it=>ko(it.question),fields:[{key:'question',label:'질문',type:'i18n',required:true},{key:'answer',label:'답변',type:'i18n',multiline:true,required:true}]},
+    resources: {label:'학습 자료',page:'학습 자료실',summary:it=>ko(it.title),fields:[{key:'title',label:'제목',type:'i18n',required:true},{key:'description',label:'설명',type:'i18n'},{key:'category',label:'분류',type:'select',options:[['samples','샘플 문제'],['syllabus','시험 대강'],['guide','가이드']]},{key:'file',label:'자료 주소',type:'file',required:true},{key:'thumb',label:'표지 글자',type:'i18n'},{key:'image',label:'표지 이미지',type:'file',accept:'image/*'}]},
+    downloads: {label:'자료 다운로드',page:'학습 자료 페이지 > 자료 다운로드 탭',summary:it=>ko(it.title),fields:[{key:'title',label:'자료 제목',type:'i18n',required:true},{key:'file',label:'첨부파일 — [파일 올리기]로 올리거나 주소를 입력하세요',type:'file',required:true},{key:'description',label:'설명 (선택)',type:'i18n'},{key:'date',label:'게시일',type:'date'}]},
   };
-  delete LIST_SCHEMAS.news;
-  LIST_SCHEMAS.notices.page='메인 및 공지사항';
-  LIST_SCHEMAS.resources={label:'학습 자료',page:'학습 자료실',summary:it=>ko(it.title),fields:[{key:'title',label:'제목',type:'i18n',required:true},{key:'description',label:'설명',type:'i18n'},{key:'category',label:'분류',type:'select',options:[['samples','샘플 문제'],['syllabus','시험 대강'],['guide','가이드']]},{key:'file',label:'자료 주소',type:'file',required:true},{key:'thumb',label:'표지 글자',type:'i18n'},{key:'image',label:'표지 이미지',type:'file',accept:'image/*'}]};
-  LIST_SCHEMAS.downloads={label:'자료 다운로드',page:'학습 자료 페이지 > 자료 다운로드 탭',summary:it=>ko(it.title),fields:[{key:'title',label:'자료 제목',type:'i18n',required:true},{key:'file',label:'첨부파일 — [파일 올리기]로 올리거나 주소를 입력하세요',type:'file',required:true},{key:'description',label:'설명 (선택)',type:'i18n'},{key:'date',label:'게시일',type:'date'}]};
   const closeModals=()=>closeMenu();
   const NAV_TARGETS=[['메인 화면',()=>showHome()],...Object.entries(pageTitles).map(([key,title])=>[title.ko,()=>openPage(key)])];
 
@@ -813,7 +784,7 @@
       const remember = h('input', { type: 'checkbox' });
       return [
         h('h2', {}, '시작하기'),
-        h('p', { class: 'cms-muted' }, '이 관리 화면에서 사이트의 모든 문구(중국어·영어·한국어), 공지사항·뉴스·자료실·표 같은 목록, 배너 이미지, 첨부파일을 수정하고 올릴 수 있습니다.'),
+        h('p', { class: 'cms-muted' }, '이 관리 화면에서 사이트의 모든 문구(중국어·영어·한국어), 공지사항·학습 자료·자료 다운로드·일정 링크, 배너 이미지와 첨부파일을 수정하고 올릴 수 있습니다.'),
         h('div', { class: 'cms-card' },
           h('h3', {}, '사용 순서'),
           h('ol', { class: 'cms-steps' },
@@ -855,7 +826,7 @@
         h('p', { class: 'cms-muted' }, '실제 사이트 화면에서 바로 수정합니다. 편집 모드를 시작한 뒤:'),
         h('ul', { class: 'cms-steps' },
           h('li', {}, h('b', {}, '글자'), '를 누르면 중국어·영어·한국어를 한 번에 고치는 창이 열립니다.'),
-          h('li', {}, h('b', {}, '공지사항·뉴스·자료실·표의 항목'), '을 누르면 그 항목을 고치거나 삭제할 수 있습니다.'),
+          h('li', {}, h('b', {}, '공지사항·학습 자료·자료 다운로드·급수의 항목'), '을 누르면 그 항목을 고치거나 삭제할 수 있습니다.'),
           h('li', {}, h('b', {}, '배너의 빈 곳'), '을 누르면 배너 배경 이미지·숨김을 설정합니다.'),
           h('li', {}, '아이콘·화살표처럼 ', h('b', {}, '글자가 없는 곳'), '을 누르면 평소처럼 페이지가 이동합니다. 화면 아래 도구 막대의 “페이지 이동”으로도 원하는 페이지·팝업을 열 수 있습니다.'),
           h('li', {}, '화면 위의 中文 / English / 한국어 버튼으로 언어를 바꿔 가며 확인할 수 있습니다.')),
